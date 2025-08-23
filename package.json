@@ -1,0 +1,25 @@
+{
+    "name": "visualx",
+    "version": "1.0.0",
+    "description": "VisualX is a library that provides predefined, adaptable, and customizable visual components to simplify the development of modern and flexible interfaces in Node.js projects with TypeScript.",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "test": "echo \"No tests specified\" && exit 0"
+    },
+    "keywords": [
+        "typescript",
+        "node",
+        "library",
+        "components",
+        "visual",
+        "adaptable",
+        "customizable"
+    ],
+    "author": "Junior Yohan Sordo García",
+    "license": "MIT",
+    "dependencies": {},
+    "devDependencies": {
+        "typescript": "^4.0.0"
+    }
+}
