@@ -1,4 +1,5 @@
 import React from 'react';
+import { type StyleType } from '../styles/DynamicLoad';
 interface InputProps {
     type: 'text' | 'date' | 'email' | 'file' | 'number' | 'password' | 'phone';
     name: string;
@@ -7,7 +8,7 @@ interface InputProps {
     onChange?: (value: string | number | File | null) => void;
     placeholder?: string;
     className?: string;
-    styleType?: 'futuristic' | 'simple';
+    styleType?: StyleType;
 }
 export declare const Input: React.FC<InputProps>;
 export {};

@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { InputContainer } from './InputContainer';
+import { styleModules, type StyleType } from '../styles/DynamicLoad';
 
 interface InputProps {
   type: 'text' | 'date' | 'email' | 'file' | 'number' | 'password' | 'phone';
@@ -10,7 +11,7 @@ interface InputProps {
   onChange?: (value: string | number | File | null) => void;
   placeholder?: string;
   className?: string;
-  styleType?: 'futuristic' | 'simple';
+  styleType?: StyleType;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -18,25 +19,12 @@ export const Input: React.FC<InputProps> = ({
   styleType = 'simple',
   ...props
 }) => {
-  const [moduleStyle, setModuleStyle] = useState<{
-    [key: string]: string;
-  } | null>(null);
-
-  useEffect(() => {
-    if (styleType !== 'simple') {
-      import(`../styles/${styleType}.module.css`)
-        .then((mod) => setModuleStyle(mod))
-        .catch(() => setModuleStyle(null));
-    } else {
-      setModuleStyle(null);
-    }
-  }, [styleType]);
   switch (type) {
     case 'text':
       return (
         <InputText
           {...props}
-          moduleStyle={moduleStyle}
+          moduleStyle={styleModules[styleType]}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -45,7 +33,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputDate
           {...props}
-          moduleStyle={moduleStyle}
+          moduleStyle={styleModules[styleType]}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -54,7 +42,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputEmail
           {...props}
-          moduleStyle={moduleStyle}
+          moduleStyle={styleModules[styleType]}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -63,7 +51,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputFile
           {...props}
-          moduleStyle={moduleStyle}
+          moduleStyle={styleModules[styleType]}
           onChange={props.onChange as (file: File | null) => void}
         />
       );
@@ -71,7 +59,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputNumber
           {...props}
-          moduleStyle={moduleStyle}
+          moduleStyle={styleModules[styleType]}
           value={props.value as number}
           onChange={props.onChange as (value: number) => void}
         />
@@ -80,7 +68,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputPassword
           {...props}
-          moduleStyle={moduleStyle}
+          moduleStyle={styleModules[styleType]}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -89,7 +77,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputPhone
           {...props}
-          moduleStyle={moduleStyle}
+          moduleStyle={styleModules[styleType]}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
