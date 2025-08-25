@@ -1,4 +1,5 @@
 import React from 'react';
+import { InputContainer } from './InputContainer';
 
 interface InputProps {
   type: 'text' | 'date' | 'email' | 'file' | 'number' | 'password' | 'phone';
@@ -7,23 +8,27 @@ interface InputProps {
   value?: string | number;
   onChange?: (value: string | number | File | null) => void;
   placeholder?: string;
+  className?: string;
+  styleType?: 'futuristic' | 'simple';
 }
 
 export const Input: React.FC<InputProps> = (props) => {
-  switch (props.type) {
+  const { type, ...then } = props;
+  switch (type) {
     case 'text':
       return (
         <InputText
-          label={props.label}
+          {...then}
+          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
-          placeholder={props.placeholder}
         />
       );
     case 'date':
       return (
         <InputDate
-          label={props.label}
+          {...then}
+          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -31,44 +36,45 @@ export const Input: React.FC<InputProps> = (props) => {
     case 'email':
       return (
         <InputEmail
-          label={props.label}
+          {...then}
+          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
-          placeholder={props.placeholder}
         />
       );
     case 'file':
       return (
         <InputFile
-          label={props.label}
+          {...then}
+          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
           onChange={props.onChange as (file: File | null) => void}
         />
       );
     case 'number':
       return (
         <InputNumber
-          label={props.label}
+          {...then}
+          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
           value={props.value as number}
           onChange={props.onChange as (value: number) => void}
-          placeholder={props.placeholder}
         />
       );
     case 'password':
       return (
         <InputPassword
-          label={props.label}
+          {...then}
+          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
-          placeholder={props.placeholder}
         />
       );
     case 'phone':
       return (
         <InputPhone
-          label={props.label}
+          {...then}
+          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
-          placeholder={props.placeholder}
         />
       );
     default:
@@ -77,6 +83,10 @@ export const Input: React.FC<InputProps> = (props) => {
 };
 
 interface InputTextProps {
+  className?: string;
+  moduleStyle: {
+    readonly [key: string]: string;
+  } | null;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -88,36 +98,50 @@ const InputText: React.FC<InputTextProps> = ({
   value,
   onChange,
   placeholder,
+  className,
 }) => (
-  <div>
-    <label>{label}</label>
+  <InputContainer label={label}>
     <input
+      className={`p-2  ${className ?? ''}`}
       type="text"
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
     />
-  </div>
+  </InputContainer>
 );
 
 interface InputDateProps {
+  className?: string;
+  moduleStyle: {
+    readonly [key: string]: string;
+  } | null;
   label: string;
   value: string;
   onChange: (value: string) => void;
 }
 
-const InputDate: React.FC<InputDateProps> = ({ label, value, onChange }) => (
-  <div>
-    <label>{label}</label>
+const InputDate: React.FC<InputDateProps> = ({
+  label,
+  value,
+  onChange,
+  className,
+}) => (
+  <InputContainer label={label}>
     <input
+      className={`p-2  ${className ?? ''}`}
       type="date"
       value={value}
       onChange={(e) => onChange(e.target.value)}
     />
-  </div>
+  </InputContainer>
 );
 
 interface InputEmailProps {
+  className?: string;
+  moduleStyle: {
+    readonly [key: string]: string;
+  } | null;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -129,9 +153,11 @@ const InputEmail: React.FC<InputEmailProps> = ({
   value,
   onChange,
   placeholder,
+  className,
 }) => (
   <InputContainer label={label}>
     <input
+      className={`p-2  ${className ?? ''}`}
       type="email"
       value={value}
       placeholder={placeholder}
@@ -141,13 +167,22 @@ const InputEmail: React.FC<InputEmailProps> = ({
 );
 
 interface InputFileProps {
+  className?: string;
+  moduleStyle: {
+    readonly [key: string]: string;
+  } | null;
   label: string;
   onChange: (file: File | null) => void;
 }
 
-const InputFile: React.FC<InputFileProps> = ({ label, onChange }) => (
+const InputFile: React.FC<InputFileProps> = ({
+  label,
+  onChange,
+  className,
+}) => (
   <InputContainer label={label}>
     <input
+      className={`p-2  ${className ?? ''}`}
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
     />
@@ -155,6 +190,10 @@ const InputFile: React.FC<InputFileProps> = ({ label, onChange }) => (
 );
 
 interface InputNumberProps {
+  className?: string;
+  moduleStyle: {
+    readonly [key: string]: string;
+  } | null;
   label: string;
   value: number;
   onChange: (value: number) => void;
@@ -166,9 +205,11 @@ const InputNumber: React.FC<InputNumberProps> = ({
   value,
   onChange,
   placeholder,
+  className,
 }) => (
   <InputContainer label={label}>
     <input
+      className={`p-2  ${className ?? ''}`}
       type="number"
       value={value}
       placeholder={placeholder}
@@ -178,6 +219,10 @@ const InputNumber: React.FC<InputNumberProps> = ({
 );
 
 interface InputPasswordProps {
+  className?: string;
+  moduleStyle: {
+    readonly [key: string]: string;
+  } | null;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -189,9 +234,11 @@ const InputPassword: React.FC<InputPasswordProps> = ({
   value,
   onChange,
   placeholder,
+  className,
 }) => (
   <InputContainer label={label}>
     <input
+      className={`p-2  ${className ?? ''}`}
       type="password"
       value={value}
       placeholder={placeholder}
@@ -201,6 +248,10 @@ const InputPassword: React.FC<InputPasswordProps> = ({
 );
 
 interface InputPhoneProps {
+  className?: string;
+  moduleStyle: {
+    readonly [key: string]: string;
+  } | null;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -212,23 +263,15 @@ const InputPhone: React.FC<InputPhoneProps> = ({
   value,
   onChange,
   placeholder,
+  className,
 }) => (
   <InputContainer label={label}>
     <input
+      className={`p-2  ${className ?? ''}`}
       type="tel"
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
     />
   </InputContainer>
-);
-
-const InputContainer: React.FC<{
-  label: string;
-  children: React.ReactNode;
-}> = ({ label, children }) => (
-  <div className="flex flex-col gap-0 mb-4">
-    <label className="font-medium text-sm">{label}</label>
-    <div className="ml-2">{children}</div>
-  </div>
 );

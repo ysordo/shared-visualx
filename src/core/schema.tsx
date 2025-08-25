@@ -69,16 +69,20 @@ function renderElement(
     );
   }
   if (tag === 'select' || props.type === 'select') {
-      return (
-        <Select
-          {...props}
-          onChange={(_val) => onChange(props.name, _val)}
-          value={value[props.name]}
-          key={key}
-        />
-      );
-    }
-  if (tag === 'input' || typeofInput.includes(tag as never)) {
+    return (
+      <Select
+        {...props}
+        onChange={(_val) => onChange(props.name, _val)}
+        value={value[props.name]}
+        key={key}
+      />
+    );
+  }
+  if (
+    tag === 'input' ||
+    typeofInput.includes(tag as never) ||
+    typeofInput.includes(props.type as never)
+  ) {
     if (tag === 'checkbox' || props.type === 'checkbox') {
       return (
         <Checkbox
@@ -102,6 +106,10 @@ function renderElement(
     return (
       <Input
         {...props}
+        type={
+          (props.type as HTMLInputTypeAttribute) ??
+          (tag as HTMLInputTypeAttribute)
+        }
         onChange={(_val) => onChange(props.name, _val)}
         value={value[props.name]}
         key={key}

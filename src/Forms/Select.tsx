@@ -1,4 +1,5 @@
 import React from 'react';
+import { InputContainer } from './InputContainer';
 
 interface SelectProps {
   label: string;
@@ -8,12 +9,11 @@ interface SelectProps {
 }
 
 export const Select: React.FC<SelectProps> = ({ label, options, value, onChange }) => (
-  <div>
-    <label>{label}</label>
+  <InputContainer label={label}>
     <select value={value} onChange={e => onChange(e.target.value)}>
       {options.map(opt => (
         <option key={opt.value} value={opt.value}>{opt.text}</option>
       ))}
     </select>
-  </div>
+  </InputContainer>
 );

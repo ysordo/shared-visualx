@@ -6,6 +6,8 @@ interface InputProps {
     value?: string | number;
     onChange?: (value: string | number | File | null) => void;
     placeholder?: string;
+    className?: string;
+    styleType?: 'futuristic' | 'simple';
 }
 export declare const Input: React.FC<InputProps>;
 export {};

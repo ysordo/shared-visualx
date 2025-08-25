@@ -48,7 +48,9 @@ function renderElement(value, element, onChange = () => { }, key) {
     if (tag === 'select' || props.type === 'select') {
         return (_createElement(Select, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
     }
-    if (tag === 'input' || typeofInput.includes(tag)) {
+    if (tag === 'input' ||
+        typeofInput.includes(tag) ||
+        typeofInput.includes(props.type)) {
         if (tag === 'checkbox' || props.type === 'checkbox') {
             return (_createElement(Checkbox, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
         }
@@ -60,7 +62,8 @@ function renderElement(value, element, onChange = () => { }, key) {
             tag === 'reset') {
             return _createElement(Button, { ...props, key: key });
         }
-        return (_createElement(Input, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+        return (_createElement(Input, { ...props, type: props.type ??
+                tag, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
     }
     if (tag === 'radio-group') {
         return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));

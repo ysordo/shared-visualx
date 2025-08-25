@@ -1,3 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-export const TextArea = ({ label, value, onChange, placeholder }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("textarea", { value: value, placeholder: placeholder, onChange: e => onChange(e.target.value) })] }));
+import { jsx as _jsx } from "react/jsx-runtime";
+import { InputContainer } from './InputContainer';
+export const TextArea = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("textarea", { value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
 //# sourceMappingURL=TextArea.js.map

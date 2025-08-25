@@ -1,30 +1,31 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { jsx as _jsx } from "react/jsx-runtime";
+import { InputContainer } from './InputContainer';
 export const Input = (props) => {
-    switch (props.type) {
+    const { type, ...then } = props;
+    switch (type) {
         case 'text':
-            return (_jsx(InputText, { label: props.label, value: props.value, onChange: props.onChange, placeholder: props.placeholder }));
+            return (_jsx(InputText, { ...then, moduleStyle: require(`../styles/${props.styleType ?? 'simple'}.module.css`) ?? null, value: props.value, onChange: props.onChange }));
         case 'date':
-            return (_jsx(InputDate, { label: props.label, value: props.value, onChange: props.onChange }));
+            return (_jsx(InputDate, { ...then, moduleStyle: require(`../styles/${props.styleType ?? 'simple'}.module.css`) ?? null, value: props.value, onChange: props.onChange }));
         case 'email':
-            return (_jsx(InputEmail, { label: props.label, value: props.value, onChange: props.onChange, placeholder: props.placeholder }));
+            return (_jsx(InputEmail, { ...then, moduleStyle: require(`../styles/${props.styleType ?? 'simple'}.module.css`) ?? null, value: props.value, onChange: props.onChange }));
         case 'file':
-            return (_jsx(InputFile, { label: props.label, onChange: props.onChange }));
+            return (_jsx(InputFile, { ...then, moduleStyle: require(`../styles/${props.styleType ?? 'simple'}.module.css`) ?? null, onChange: props.onChange }));
         case 'number':
-            return (_jsx(InputNumber, { label: props.label, value: props.value, onChange: props.onChange, placeholder: props.placeholder }));
+            return (_jsx(InputNumber, { ...then, moduleStyle: require(`../styles/${props.styleType ?? 'simple'}.module.css`) ?? null, value: props.value, onChange: props.onChange }));
         case 'password':
-            return (_jsx(InputPassword, { label: props.label, value: props.value, onChange: props.onChange, placeholder: props.placeholder }));
+            return (_jsx(InputPassword, { ...then, moduleStyle: require(`../styles/${props.styleType ?? 'simple'}.module.css`) ?? null, value: props.value, onChange: props.onChange }));
         case 'phone':
-            return (_jsx(InputPhone, { label: props.label, value: props.value, onChange: props.onChange, placeholder: props.placeholder }));
+            return (_jsx(InputPhone, { ...then, moduleStyle: require(`../styles/${props.styleType ?? 'simple'}.module.css`) ?? null, value: props.value, onChange: props.onChange }));
         default:
             return null;
     }
 };
-const InputText = ({ label, value, onChange, placeholder, }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "text", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) })] }));
-const InputDate = ({ label, value, onChange }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "date", value: value, onChange: (e) => onChange(e.target.value) })] }));
-const InputEmail = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "email", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
-const InputFile = ({ label, onChange }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "file", onChange: (e) => onChange(e.target.files ? e.target.files[0] : null) }) }));
-const InputNumber = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "number", value: value, placeholder: placeholder, onChange: (e) => onChange(Number(e.target.value)) }) }));
-const InputPassword = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "password", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
-const InputPhone = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "tel", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
-const InputContainer = ({ label, children }) => (_jsxs("div", { className: "flex flex-col gap-0 mb-4", children: [_jsx("label", { className: "font-medium text-sm", children: label }), _jsx("div", { className: "ml-2", children: children })] }));
+const InputText = ({ label, value, onChange, placeholder, className, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { className: `p-2  ${className ?? ''}`, type: "text", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputDate = ({ label, value, onChange, className, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { className: `p-2  ${className ?? ''}`, type: "date", value: value, onChange: (e) => onChange(e.target.value) }) }));
+const InputEmail = ({ label, value, onChange, placeholder, className, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { className: `p-2  ${className ?? ''}`, type: "email", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputFile = ({ label, onChange, className, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { className: `p-2  ${className ?? ''}`, type: "file", onChange: (e) => onChange(e.target.files ? e.target.files[0] : null) }) }));
+const InputNumber = ({ label, value, onChange, placeholder, className, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { className: `p-2  ${className ?? ''}`, type: "number", value: value, placeholder: placeholder, onChange: (e) => onChange(Number(e.target.value)) }) }));
+const InputPassword = ({ label, value, onChange, placeholder, className, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { className: `p-2  ${className ?? ''}`, type: "password", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputPhone = ({ label, value, onChange, placeholder, className, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { className: `p-2  ${className ?? ''}`, type: "tel", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
 //# sourceMappingURL=Input.js.map
