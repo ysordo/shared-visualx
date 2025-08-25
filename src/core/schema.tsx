@@ -1,6 +1,16 @@
 import type { ChangeEvent, JSX } from 'react';
-import type { ElementObject, ISchema } from '../interface/schema';
+import {
+  typeofInput,
+  type ElementObject,
+  type ISchema,
+} from '../interface/schema';
 import React, { useState } from 'react';
+import { Input } from '../Forms/Input';
+import { TextArea } from '../Forms/TextArea';
+import { Select } from '../Forms/Select';
+import { Checkbox } from '../Forms/Checkbox';
+import { RadioGroup } from '../Forms/RadioGroup';
+import { Button } from '../Forms/Button';
 
 function renderElement(
   value: ElementObject,
@@ -27,17 +37,63 @@ function renderElement(
       )
     );
   }
+
+  if (tag === 'input' || typeofInput.includes(tag as never)) {
+    if (tag === 'textarea') {
+      return (
+        <TextArea
+          {...props}
+          onChange={(_val) => onChange(props.name, _val)}
+          value={value[props.name]}
+          key={key}
+        />
+      );
+    }
+    if (tag === 'select') {
+      return (
+        <Select
+          {...props}
+          onChange={(_val) => onChange(props.name, _val)}
+          value={value[props.name]}
+          key={key}
+        />
+      );
+    }
+    if (tag === 'checkbox') {
+      return (
+        <Checkbox
+          {...props}
+          onChange={(_val) => onChange(props.name, _val)}
+          value={value[props.name]}
+          key={key}
+        />
+      );
+    }
+    if(tag === 'button') {
+      return <Button {...props} key={key} />;
+    }
+    return (
+      <Input
+        {...props}
+        onChange={(_val) => onChange(props.name, _val)}
+        value={value[props.name]}
+        key={key}
+      />
+    );
+  }
+  if (tag === 'radio-group') {
+    return (
+      <RadioGroup
+        {...props}
+        onChange={(_val) => onChange(props.name, _val)}
+        value={value[props.name]}
+        key={key}
+      />
+    );
+  }
+
   return React.createElement(tag, {
     ...props,
-    ...(tag === 'input'
-      ? {
-          value: value[props.name],
-          onChange: ({ target }: ChangeEvent<HTMLInputElement>) => {
-            console.log(target.value, target.name);
-            onChange(target.name, target.value);
-          },
-        }
-      : {}),
     key,
   });
 }

@@ -1,5 +1,13 @@
 import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
+import { createElement as _createElement } from "react";
+import { typeofInput, } from '../interface/schema';
 import React, { useState } from 'react';
+import { Input } from '../Forms/Input';
+import { TextArea } from '../Forms/TextArea';
+import { Select } from '../Forms/Select';
+import { Checkbox } from '../Forms/Checkbox';
+import { RadioGroup } from '../Forms/RadioGroup';
+import { Button } from '../Forms/Button';
 function renderElement(value, element, onChange = () => { }, key) {
     if (!element) {
         return null;
@@ -11,17 +19,26 @@ function renderElement(value, element, onChange = () => { }, key) {
         }
         return React.createElement(tag, { ...props, children: undefined, key }, props.children.map((child, idx) => renderElement(value, child, onChange, `${idx}`)));
     }
+    if (tag === 'input' || typeofInput.includes(tag)) {
+        if (tag === 'textarea') {
+            return (_createElement(TextArea, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+        }
+        if (tag === 'select') {
+            return (_createElement(Select, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+        }
+        if (tag === 'checkbox') {
+            return (_createElement(Checkbox, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+        }
+        if (tag === 'button') {
+            return _createElement(Button, { ...props, key: key });
+        }
+        return (_createElement(Input, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+    }
+    if (tag === 'radio-group') {
+        return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+    }
     return React.createElement(tag, {
         ...props,
-        ...(tag === 'input'
-            ? {
-                value: value[props.name],
-                onChange: ({ target }) => {
-                    console.log(target.value, target.name);
-                    onChange(target.name, target.value);
-                },
-            }
-            : {}),
         key,
     });
 }
