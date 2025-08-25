@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import type { ISchema } from '../interface/schema';
+import { useState, type JSX } from 'react';
+import type { ElementObject, ISchema } from '../interface/schema';
 import { useSchema } from '../core/schema';
 
-export function useForm({ value, schema }: ISchema): UseFormReturn {
+export function useForm({ value, schema }: ISchema): [JSX.Element, ElementObject, Record<string, string | null>] {
   const [errors, setErrors] = useState<Record<string, string | null>>({});
   const [values, renderedForm] = useSchema({
     value,
@@ -13,5 +13,5 @@ export function useForm({ value, schema }: ISchema): UseFormReturn {
   // Renderizado dinámico de los elementos
   const form = <form>{renderedForm}</form>;
 
-  return { form, values, errors };
+  return  [form, values, errors];
 }

@@ -4,7 +4,7 @@ import { Carousel } from '../carousel/Carousel';
 
 interface UseCarouselProps<T> {
   items: T[];
-  renderItem: (item: T, index: number) => JSX.Element;
+  renderItem?: (item: T, index: number) => JSX.Element;
   className?: string;
 }
 
@@ -21,9 +21,12 @@ interface UseCarouselReturn {
 
 export function useCarousel<T>({
   items,
-  renderItem,
   className = '',
-}: UseCarouselProps<T>): UseCarouselReturn {
+}: UseCarouselProps<T>): [
+  UseCarouselReturn['html'],
+  number,
+  UseCarouselReturn['state']
+] {
   const [index, setIndex] = useState(0);
 
   const next = () => setIndex((i) => (i + 1) % items.length);
@@ -36,21 +39,18 @@ export function useCarousel<T>({
       index={index}
       next={next}
       prev={prev}
-      renderItem={
-        renderItem as (item: CarouselItem, index: number) => React.ReactNode
-      }
       setIndex={setIndex}
     />
   );
 
-  return {
+  return [
     html,
     index,
-    state: {
+    {
       next,
       prev,
       setIndex,
       length: items.length,
     },
-  };
+  ];
 }

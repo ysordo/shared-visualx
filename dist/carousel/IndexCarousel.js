@@ -4,7 +4,7 @@ export const IndexCarousel = ({ items, index, setIndex, next, prev, length, clas
     if (items.length === 0) {
         return null;
     }
-    return (_jsxs("div", { className: `flex flex-col items-center ${className}`, children: [_jsxs("div", { className: "flex gap-2 mb-2", children: [_jsx(ActionButton, { onClick: prev, ariaLabel: "Previous", children: "Prev" }), _jsx(ActionButton, { onClick: next, ariaLabel: "Next", children: "Next" }), _jsx(ActionButton, { onClick: () => setIndex(0), ariaLabel: "First", children: "First" }), _jsx(ActionButton, { onClick: () => setIndex(length - 1), ariaLabel: "Last", children: "Last" })] }), _jsx("div", { className: "flex gap-2", children: items
+    return (_jsxs("div", { className: `flex justify-center gap-3 items-center ${className}`, children: [_jsx(ActionButton, { onClick: () => setIndex(0), ariaLabel: "First", children: '<<' }), _jsx(ActionButton, { onClick: prev, ariaLabel: "Previous", children: '<' }), _jsx("div", { className: "flex gap-2", children: items
                     .map((_, idx) => idx)
                     .filter((idx) => {
                     // Show 3 indicators centered around index
@@ -21,6 +21,6 @@ export const IndexCarousel = ({ items, index, setIndex, next, prev, length, clas
                 })
                     .map((idx) => (_jsx(ActionButton, { onClick: () => setIndex(idx), ariaLabel: `Go to item ${idx + 1}`, children: _jsx("span", { className: `w-3 h-3 rounded-full border-2 inline-block ${idx === index
                             ? 'bg-blue-500 border-blue-500'
-                            : 'bg-gray-300 border-gray-400'}` }) }, idx))) })] }));
+                            : 'bg-gray-300 border-gray-400'}` }) }, idx))) }), _jsx(ActionButton, { onClick: next, ariaLabel: "Next", children: '>' }), _jsx(ActionButton, { onClick: () => setIndex(length - 1), ariaLabel: "Last", children: '>>' })] }));
 };
 //# sourceMappingURL=IndexCarousel.js.map

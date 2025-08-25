@@ -19,7 +19,6 @@ interface CarouselProps {
     prev?: () => void;
     index?: number;
     setIndex?: (i: number) => void;
-    renderItem?: (item: CarouselItem, index: number) => React.ReactNode;
 }
 export declare const Carousel: React.FC<CarouselProps>;
 export {};

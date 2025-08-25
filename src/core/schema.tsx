@@ -1,9 +1,5 @@
-import type { ChangeEvent, JSX } from 'react';
-import {
-  typeofInput,
-  type ElementObject,
-  type ISchema,
-} from '../interface/schema';
+import type { JSX } from 'react';
+import { type ElementObject, type ISchema } from '../interface/schema';
 import React, { useState } from 'react';
 import { Input } from '../Forms/Input';
 import { TextArea } from '../Forms/TextArea';
@@ -11,6 +7,31 @@ import { Select } from '../Forms/Select';
 import { Checkbox } from '../Forms/Checkbox';
 import { RadioGroup } from '../Forms/RadioGroup';
 import { Button } from '../Forms/Button';
+
+const typeofInput = [
+  'button',
+  'checkbox',
+  'color',
+  'date',
+  'datetime-local',
+  'email',
+  'file',
+  'hidden',
+  'image',
+  'month',
+  'number',
+  'password',
+  'radio',
+  'range',
+  'reset',
+  'search',
+  'submit',
+  'tel',
+  'text',
+  'time',
+  'url',
+  'week',
+] as const;
 
 function renderElement(
   value: ElementObject,
@@ -69,7 +90,7 @@ function renderElement(
         />
       );
     }
-    if(tag === 'button') {
+    if (tag === 'button') {
       return <Button {...props} key={key} />;
     }
     return (

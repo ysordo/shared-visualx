@@ -1,6 +1,5 @@
 import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
 import { createElement as _createElement } from "react";
-import { typeofInput, } from '../interface/schema';
 import React, { useState } from 'react';
 import { Input } from '../Forms/Input';
 import { TextArea } from '../Forms/TextArea';
@@ -8,6 +7,30 @@ import { Select } from '../Forms/Select';
 import { Checkbox } from '../Forms/Checkbox';
 import { RadioGroup } from '../Forms/RadioGroup';
 import { Button } from '../Forms/Button';
+const typeofInput = [
+    'button',
+    'checkbox',
+    'color',
+    'date',
+    'datetime-local',
+    'email',
+    'file',
+    'hidden',
+    'image',
+    'month',
+    'number',
+    'password',
+    'radio',
+    'range',
+    'reset',
+    'search',
+    'submit',
+    'tel',
+    'text',
+    'time',
+    'url',
+    'week',
+];
 function renderElement(value, element, onChange = () => { }, key) {
     if (!element) {
         return null;

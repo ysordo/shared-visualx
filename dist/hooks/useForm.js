@@ -9,6 +9,6 @@ export function useForm({ value, schema }) {
     });
     // Renderizado dinámico de los elementos
     const form = _jsx("form", { children: renderedForm });
-    return { form, values, errors };
+    return [form, values, errors];
 }
 //# sourceMappingURL=useForm.js.map

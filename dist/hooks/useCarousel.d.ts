@@ -1,7 +1,7 @@
 import { type JSX } from 'react';
 interface UseCarouselProps<T> {
     items: T[];
-    renderItem: (item: T, index: number) => JSX.Element;
+    renderItem?: (item: T, index: number) => JSX.Element;
     className?: string;
 }
 interface UseCarouselReturn {
@@ -14,6 +14,10 @@ interface UseCarouselReturn {
         length: number;
     };
 }
-export declare function useCarousel<T>({ items, renderItem, className, }: UseCarouselProps<T>): UseCarouselReturn;
+export declare function useCarousel<T>({ items, className, }: UseCarouselProps<T>): [
+    UseCarouselReturn['html'],
+    number,
+    UseCarouselReturn['state']
+];
 export {};
 //# sourceMappingURL=useCarousel.d.ts.map

@@ -1,6 +1,6 @@
 import React from 'react';
 interface IndexCarouselProps {
-    items: React.ReactNode[];
+    items: unknown[];
     index: number;
     setIndex: (i: number) => void;
     next: () => void;

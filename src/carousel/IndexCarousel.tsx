@@ -2,7 +2,7 @@ import React from 'react';
 import { ActionButton } from './ActionIndexCarousel';
 
 interface IndexCarouselProps {
-  items: React.ReactNode[];
+  items: unknown[];
   index: number;
   setIndex: (i: number) => void;
   next: () => void;
@@ -25,21 +25,13 @@ export const IndexCarousel: React.FC<IndexCarouselProps> = ({
   }
 
   return (
-    <div className={`flex flex-col items-center ${className}`}>
-      <div className="flex gap-2 mb-2">
-        <ActionButton onClick={prev} ariaLabel="Previous">
-          Prev
-        </ActionButton>
-        <ActionButton onClick={next} ariaLabel="Next">
-          Next
-        </ActionButton>
-        <ActionButton onClick={() => setIndex(0)} ariaLabel="First">
-          First
-        </ActionButton>
-        <ActionButton onClick={() => setIndex(length - 1)} ariaLabel="Last">
-          Last
-        </ActionButton>
-      </div>
+    <div className={`flex justify-center gap-3 items-center ${className}`}>
+      <ActionButton onClick={() => setIndex(0)} ariaLabel="First">
+        {'<<'}
+      </ActionButton>
+      <ActionButton onClick={prev} ariaLabel="Previous">
+        {'<'}
+      </ActionButton>
       <div className="flex gap-2">
         {items
           .map((_, idx) => idx)
@@ -71,6 +63,12 @@ export const IndexCarousel: React.FC<IndexCarouselProps> = ({
             </ActionButton>
           ))}
       </div>
+      <ActionButton onClick={next} ariaLabel="Next">
+        {'>'}
+      </ActionButton>
+      <ActionButton onClick={() => setIndex(length - 1)} ariaLabel="Last">
+        {'>>'}
+      </ActionButton>
     </div>
   );
 };
