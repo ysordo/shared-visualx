@@ -130,15 +130,14 @@ const InputEmail: React.FC<InputEmailProps> = ({
   onChange,
   placeholder,
 }) => (
-  <div>
-    <label>{label}</label>
+  <InputContainer label={label}>
     <input
       type="email"
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
     />
-  </div>
+  </InputContainer>
 );
 
 interface InputFileProps {
@@ -147,13 +146,12 @@ interface InputFileProps {
 }
 
 const InputFile: React.FC<InputFileProps> = ({ label, onChange }) => (
-  <div>
-    <label>{label}</label>
+  <InputContainer label={label}>
     <input
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
     />
-  </div>
+  </InputContainer>
 );
 
 interface InputNumberProps {
@@ -169,15 +167,14 @@ const InputNumber: React.FC<InputNumberProps> = ({
   onChange,
   placeholder,
 }) => (
-  <div>
-    <label>{label}</label>
+  <InputContainer label={label}>
     <input
       type="number"
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(Number(e.target.value))}
     />
-  </div>
+  </InputContainer>
 );
 
 interface InputPasswordProps {
@@ -193,15 +190,14 @@ const InputPassword: React.FC<InputPasswordProps> = ({
   onChange,
   placeholder,
 }) => (
-  <div>
-    <label>{label}</label>
+  <InputContainer label={label}>
     <input
       type="password"
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
     />
-  </div>
+  </InputContainer>
 );
 
 interface InputPhoneProps {
@@ -217,13 +213,22 @@ const InputPhone: React.FC<InputPhoneProps> = ({
   onChange,
   placeholder,
 }) => (
-  <div>
-    <label>{label}</label>
+  <InputContainer label={label}>
     <input
       type="tel"
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
     />
+  </InputContainer>
+);
+
+const InputContainer: React.FC<{
+  label: string;
+  children: React.ReactNode;
+}> = ({ label, children }) => (
+  <div className="flex flex-col gap-0 mb-4">
+    <label className="font-medium text-sm">{label}</label>
+    <div className="ml-2">{children}</div>
   </div>
 );

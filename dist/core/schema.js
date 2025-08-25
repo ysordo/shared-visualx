@@ -42,17 +42,22 @@ function renderElement(value, element, onChange = () => { }, key) {
         }
         return React.createElement(tag, { ...props, children: undefined, key }, props.children.map((child, idx) => renderElement(value, child, onChange, `${idx}`)));
     }
+    if (tag === 'textarea' || props.type === 'textarea') {
+        return (_createElement(TextArea, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+    }
+    if (tag === 'select' || props.type === 'select') {
+        return (_createElement(Select, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+    }
     if (tag === 'input' || typeofInput.includes(tag)) {
-        if (tag === 'textarea') {
-            return (_createElement(TextArea, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
-        }
-        if (tag === 'select') {
-            return (_createElement(Select, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
-        }
-        if (tag === 'checkbox') {
+        if (tag === 'checkbox' || props.type === 'checkbox') {
             return (_createElement(Checkbox, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
         }
-        if (tag === 'button') {
+        if (tag === 'button' ||
+            props.type === 'button' ||
+            props.type === 'submit' ||
+            props.type === 'reset' ||
+            tag === 'submit' ||
+            tag === 'reset') {
             return _createElement(Button, { ...props, key: key });
         }
         return (_createElement(Input, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
@@ -65,7 +70,7 @@ function renderElement(value, element, onChange = () => { }, key) {
         key,
     });
 }
-export function useSchema({ value, schema, }) {
+export function useSchema(value, schema) {
     const [values, setValues] = useState(value);
     const handleChange = (name, value) => {
         setValues((prev) => ({ ...prev, [name]: value }));

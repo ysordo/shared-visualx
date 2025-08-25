@@ -1,4 +1,5 @@
-import type { JSX } from 'react';
-import { type ElementObject, type ISchema } from '../interface/schema';
-export declare function useSchema({ value, schema, }: ISchema): [ElementObject, JSX.Element];
+import type { HTMLElementType, HTMLInputTypeAttribute, JSX } from 'react';
+export declare function useSchema(value: {
+    [key: string]: unknown;
+}, schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>): [Record<string, unknown>, JSX.Element];
 //# sourceMappingURL=schema.d.ts.map

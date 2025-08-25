@@ -1,4 +1,5 @@
-import { type JSX } from 'react';
-import type { ElementObject, ISchema } from '../interface/schema';
-export declare function useForm({ value, schema }: ISchema): [JSX.Element, ElementObject, Record<string, string | null>];
+import { type HTMLElementType, type HTMLInputTypeAttribute, type JSX } from 'react';
+export declare function useForm(value: {
+    [key: string]: unknown;
+}, schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>): [JSX.Element, Record<string, unknown>, Record<string, string | null>];
 //# sourceMappingURL=useForm.d.ts.map

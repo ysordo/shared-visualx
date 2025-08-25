@@ -21,9 +21,10 @@ export const Input = (props) => {
 };
 const InputText = ({ label, value, onChange, placeholder, }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "text", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) })] }));
 const InputDate = ({ label, value, onChange }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "date", value: value, onChange: (e) => onChange(e.target.value) })] }));
-const InputEmail = ({ label, value, onChange, placeholder, }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "email", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) })] }));
-const InputFile = ({ label, onChange }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "file", onChange: (e) => onChange(e.target.files ? e.target.files[0] : null) })] }));
-const InputNumber = ({ label, value, onChange, placeholder, }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "number", value: value, placeholder: placeholder, onChange: (e) => onChange(Number(e.target.value)) })] }));
-const InputPassword = ({ label, value, onChange, placeholder, }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "password", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) })] }));
-const InputPhone = ({ label, value, onChange, placeholder, }) => (_jsxs("div", { children: [_jsx("label", { children: label }), _jsx("input", { type: "tel", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) })] }));
+const InputEmail = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "email", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputFile = ({ label, onChange }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "file", onChange: (e) => onChange(e.target.files ? e.target.files[0] : null) }) }));
+const InputNumber = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "number", value: value, placeholder: placeholder, onChange: (e) => onChange(Number(e.target.value)) }) }));
+const InputPassword = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "password", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputPhone = ({ label, value, onChange, placeholder, }) => (_jsx(InputContainer, { label: label, children: _jsx("input", { type: "tel", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputContainer = ({ label, children }) => (_jsxs("div", { className: "flex flex-col gap-0 mb-4", children: [_jsx("label", { className: "font-medium text-sm", children: label }), _jsx("div", { className: "ml-2", children: children })] }));
 //# sourceMappingURL=Input.js.map

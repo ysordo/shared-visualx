@@ -1,5 +1,4 @@
-import type { JSX } from 'react';
-import { type ElementObject, type ISchema } from '../interface/schema';
+import type { HTMLElementType, HTMLInputTypeAttribute, JSX } from 'react';
 import React, { useState } from 'react';
 import { Input } from '../Forms/Input';
 import { TextArea } from '../Forms/TextArea';
@@ -34,9 +33,9 @@ const typeofInput = [
 ] as const;
 
 function renderElement(
-  value: ElementObject,
+  value: Record<string, unknown>,
   element: unknown,
-  onChange: (name: string, value: any) => void = () => {},
+  onChange: (name: string, value: unknown) => void = () => {},
   key?: string
 ): JSX.Element | null {
   if (!element) {
@@ -59,18 +58,17 @@ function renderElement(
     );
   }
 
-  if (tag === 'input' || typeofInput.includes(tag as never)) {
-    if (tag === 'textarea') {
-      return (
-        <TextArea
-          {...props}
-          onChange={(_val) => onChange(props.name, _val)}
-          value={value[props.name]}
-          key={key}
-        />
-      );
-    }
-    if (tag === 'select') {
+  if (tag === 'textarea' || props.type === 'textarea') {
+    return (
+      <TextArea
+        {...props}
+        onChange={(_val) => onChange(props.name, _val)}
+        value={value[props.name]}
+        key={key}
+      />
+    );
+  }
+  if (tag === 'select' || props.type === 'select') {
       return (
         <Select
           {...props}
@@ -80,7 +78,8 @@ function renderElement(
         />
       );
     }
-    if (tag === 'checkbox') {
+  if (tag === 'input' || typeofInput.includes(tag as never)) {
+    if (tag === 'checkbox' || props.type === 'checkbox') {
       return (
         <Checkbox
           {...props}
@@ -90,7 +89,14 @@ function renderElement(
         />
       );
     }
-    if (tag === 'button') {
+    if (
+      tag === 'button' ||
+      props.type === 'button' ||
+      props.type === 'submit' ||
+      props.type === 'reset' ||
+      tag === 'submit' ||
+      tag === 'reset'
+    ) {
       return <Button {...props} key={key} />;
     }
     return (
@@ -119,12 +125,12 @@ function renderElement(
   });
 }
 
-export function useSchema({
-  value,
-  schema,
-}: ISchema): [ElementObject, JSX.Element] {
+export function useSchema(
+  value: { [key: string]: unknown },
+  schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>
+): [Record<string, unknown>, JSX.Element] {
   const [values, setValues] = useState(value);
-  const handleChange = (name: string, value: any) => {
+  const handleChange = (name: string, value: unknown) => {
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
