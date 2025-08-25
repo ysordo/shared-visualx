@@ -12,14 +12,21 @@ interface InputProps {
   styleType?: 'futuristic' | 'simple';
 }
 
-export const Input: React.FC<InputProps> = (props) => {
-  const { type, ...then } = props;
+export const Input: React.FC<InputProps> = ({
+  type,
+  styleType = 'simple',
+  ...props
+}) => {
   switch (type) {
     case 'text':
       return (
         <InputText
-          {...then}
-          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
+          {...props}
+          moduleStyle={
+            styleType !== 'simple'
+              ? require(`../styles/${styleType}.module.css`)
+              : null
+          }
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -27,8 +34,12 @@ export const Input: React.FC<InputProps> = (props) => {
     case 'date':
       return (
         <InputDate
-          {...then}
-          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
+          {...props}
+          moduleStyle={
+            styleType !== 'simple'
+              ? require(`../styles/${styleType}.module.css`)
+              : null
+          }
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -36,8 +47,12 @@ export const Input: React.FC<InputProps> = (props) => {
     case 'email':
       return (
         <InputEmail
-          {...then}
-          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
+          {...props}
+          moduleStyle={
+            styleType !== 'simple'
+              ? require(`../styles/${styleType}.module.css`)
+              : null
+          }
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -45,16 +60,24 @@ export const Input: React.FC<InputProps> = (props) => {
     case 'file':
       return (
         <InputFile
-          {...then}
-          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
+          {...props}
+          moduleStyle={
+            styleType !== 'simple'
+              ? require(`../styles/${styleType}.module.css`)
+              : null
+          }
           onChange={props.onChange as (file: File | null) => void}
         />
       );
     case 'number':
       return (
         <InputNumber
-          {...then}
-          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
+          {...props}
+          moduleStyle={
+            styleType !== 'simple'
+              ? require(`../styles/${styleType}.module.css`)
+              : null
+          }
           value={props.value as number}
           onChange={props.onChange as (value: number) => void}
         />
@@ -62,8 +85,12 @@ export const Input: React.FC<InputProps> = (props) => {
     case 'password':
       return (
         <InputPassword
-          {...then}
-          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
+          {...props}
+          moduleStyle={
+            styleType !== 'simple'
+              ? require(`../styles/${styleType}.module.css`)
+              : null
+          }
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -71,8 +98,12 @@ export const Input: React.FC<InputProps> = (props) => {
     case 'phone':
       return (
         <InputPhone
-          {...then}
-          moduleStyle={require(`../styles/${props.styleType ?? 'simple'}.module.css`)?? null}
+          {...props}
+          moduleStyle={
+            styleType !== 'simple'
+              ? require(`../styles/${styleType}.module.css`)
+              : null
+          }
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -103,7 +134,9 @@ const InputText: React.FC<InputTextProps> = ({
 }) => (
   <InputContainer label={label}>
     <input
-      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      className={`${
+        moduleStyle?.st ?? ''
+      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="text"
       value={value}
       placeholder={placeholder}
@@ -131,7 +164,9 @@ const InputDate: React.FC<InputDateProps> = ({
 }) => (
   <InputContainer label={label}>
     <input
-      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      className={`${
+        moduleStyle?.st ?? ''
+      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="date"
       value={value}
       onChange={(e) => onChange(e.target.value)}
@@ -160,7 +195,9 @@ const InputEmail: React.FC<InputEmailProps> = ({
 }) => (
   <InputContainer label={label}>
     <input
-      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      className={`${
+        moduleStyle?.st ?? ''
+      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="email"
       value={value}
       placeholder={placeholder}
@@ -186,7 +223,9 @@ const InputFile: React.FC<InputFileProps> = ({
 }) => (
   <InputContainer label={label}>
     <input
-      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      className={`${
+        moduleStyle?.st ?? ''
+      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
     />
@@ -214,7 +253,9 @@ const InputNumber: React.FC<InputNumberProps> = ({
 }) => (
   <InputContainer label={label}>
     <input
-      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      className={`${
+        moduleStyle?.st ?? ''
+      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="number"
       value={value}
       placeholder={placeholder}
@@ -244,7 +285,9 @@ const InputPassword: React.FC<InputPasswordProps> = ({
 }) => (
   <InputContainer label={label}>
     <input
-      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      className={`${
+        moduleStyle?.st ?? ''
+      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="password"
       value={value}
       placeholder={placeholder}
@@ -274,7 +317,9 @@ const InputPhone: React.FC<InputPhoneProps> = ({
 }) => (
   <InputContainer label={label}>
     <input
-      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      className={`${
+        moduleStyle?.st ?? ''
+      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="tel"
       value={value}
       placeholder={placeholder}
