@@ -8,5 +8,8 @@ const resolvedModules = Object.entries(stylesMap).reduce((acc, [key, file]) => {
     }
     return acc;
 }, {});
-export const styleModules = resolvedModules;
+export const styleModules = {
+    simple: null,
+    futuristic: require('./futuristic.module.css'),
+};
 //# sourceMappingURL=DynamicLoad.js.map

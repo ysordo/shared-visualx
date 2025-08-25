@@ -12,5 +12,8 @@ const resolvedModules = Object.entries(stylesMap).reduce(
   {} as Record<string, any | null>
 );
 
-export const styleModules = resolvedModules;
+export const styleModules = {
+    simple: null,
+    futuristic: require('./futuristic.module.css'),
+};
 export type StyleType = keyof typeof styleModules;
