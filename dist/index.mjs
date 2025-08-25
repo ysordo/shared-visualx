@@ -1,4 +1,3 @@
-"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -40,8 +39,8 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 
 // src/styles/stylesMap.json
 var require_stylesMap = __commonJS({
-  "src/styles/stylesMap.json"(exports2, module2) {
-    module2.exports = {
+  "src/styles/stylesMap.json"(exports, module) {
+    module.exports = {
       futuristic: "futuristic.module.css",
       simple: null
     };
@@ -50,8 +49,8 @@ var require_stylesMap = __commonJS({
 
 // src/styles/futuristic.module.css
 var require_futuristic = __commonJS({
-  "src/styles/futuristic.module.css"(exports2, module2) {
-    module2.exports = "./futuristic.module-DOUUSJ7B.module.css";
+  "src/styles/futuristic.module.css"(exports, module) {
+    module.exports = "./futuristic.module-DOUUSJ7B.module.css";
   }
 });
 
@@ -93,30 +92,24 @@ var init_DynamicLoad = __esm({
   }
 });
 
-// src/index.ts
-var index_exports = {};
-__export(index_exports, {
-  useCarousel: () => useCarousel,
-  useForm: () => useForm
-});
-module.exports = __toCommonJS(index_exports);
-
 // src/hooks/useForm.tsx
-var import_react3 = require("react");
+import {
+  useState as useState2
+} from "react";
 
 // src/core/schema.tsx
-var import_react = __toESM(require("react"));
+import React, { useState } from "react";
 
 // src/Forms/InputContainer.tsx
-var import_jsx_runtime = require("react/jsx-runtime");
-var InputContainer = ({ label, children }) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { className: "flex flex-col gap-0 mb-4", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("label", { className: "font-medium text-sm", children: label }),
-  /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "ml-2", children })
+import { jsx, jsxs } from "react/jsx-runtime";
+var InputContainer = ({ label, children }) => /* @__PURE__ */ jsxs("div", { className: "flex flex-col gap-0 mb-4", children: [
+  /* @__PURE__ */ jsx("label", { className: "font-medium text-sm", children: label }),
+  /* @__PURE__ */ jsx("div", { className: "ml-2", children })
 ] });
 
 // src/Forms/Input.tsx
 init_DynamicLoad();
-var import_jsx_runtime2 = require("react/jsx-runtime");
+import { jsx as jsx2 } from "react/jsx-runtime";
 var Input = ({
   type,
   styleType = "simple",
@@ -124,7 +117,7 @@ var Input = ({
 }) => {
   switch (type) {
     case "text":
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      return /* @__PURE__ */ jsx2(
         InputText,
         {
           ...props,
@@ -134,7 +127,7 @@ var Input = ({
         }
       );
     case "date":
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      return /* @__PURE__ */ jsx2(
         InputDate,
         {
           ...props,
@@ -144,7 +137,7 @@ var Input = ({
         }
       );
     case "email":
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      return /* @__PURE__ */ jsx2(
         InputEmail,
         {
           ...props,
@@ -154,7 +147,7 @@ var Input = ({
         }
       );
     case "file":
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      return /* @__PURE__ */ jsx2(
         InputFile,
         {
           ...props,
@@ -163,7 +156,7 @@ var Input = ({
         }
       );
     case "number":
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      return /* @__PURE__ */ jsx2(
         InputNumber,
         {
           ...props,
@@ -173,7 +166,7 @@ var Input = ({
         }
       );
     case "password":
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      return /* @__PURE__ */ jsx2(
         InputPassword,
         {
           ...props,
@@ -183,7 +176,7 @@ var Input = ({
         }
       );
     case "phone":
-      return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      return /* @__PURE__ */ jsx2(
         InputPhone,
         {
           ...props,
@@ -203,7 +196,7 @@ var InputText = ({
   onChange,
   placeholder,
   className
-}) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+}) => /* @__PURE__ */ jsx2(InputContainer, { label, children: /* @__PURE__ */ jsx2(
   "input",
   {
     className: `${moduleStyle?.st ?? ""} !border !border-[#00F3FF] !rounded-lg ${className ?? ""}`,
@@ -219,7 +212,7 @@ var InputDate = ({
   moduleStyle,
   onChange,
   className
-}) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+}) => /* @__PURE__ */ jsx2(InputContainer, { label, children: /* @__PURE__ */ jsx2(
   "input",
   {
     className: `${moduleStyle?.st ?? ""} !border !border-[#00F3FF] !rounded-lg ${className ?? ""}`,
@@ -235,7 +228,7 @@ var InputEmail = ({
   onChange,
   placeholder,
   className
-}) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+}) => /* @__PURE__ */ jsx2(InputContainer, { label, children: /* @__PURE__ */ jsx2(
   "input",
   {
     className: `${moduleStyle?.st ?? ""} !border !border-[#00F3FF] !rounded-lg ${className ?? ""}`,
@@ -250,7 +243,7 @@ var InputFile = ({
   moduleStyle,
   onChange,
   className
-}) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+}) => /* @__PURE__ */ jsx2(InputContainer, { label, children: /* @__PURE__ */ jsx2(
   "input",
   {
     className: `${moduleStyle?.st ?? ""} !border !border-[#00F3FF] !rounded-lg ${className ?? ""}`,
@@ -265,7 +258,7 @@ var InputNumber = ({
   onChange,
   placeholder,
   className
-}) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+}) => /* @__PURE__ */ jsx2(InputContainer, { label, children: /* @__PURE__ */ jsx2(
   "input",
   {
     className: `${moduleStyle?.st ?? ""} !border !border-[#00F3FF] !rounded-lg ${className ?? ""}`,
@@ -282,7 +275,7 @@ var InputPassword = ({
   onChange,
   placeholder,
   className
-}) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+}) => /* @__PURE__ */ jsx2(InputContainer, { label, children: /* @__PURE__ */ jsx2(
   "input",
   {
     className: `${moduleStyle?.st ?? ""} !border !border-[#00F3FF] !rounded-lg ${className ?? ""}`,
@@ -299,7 +292,7 @@ var InputPhone = ({
   onChange,
   placeholder,
   className
-}) => /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+}) => /* @__PURE__ */ jsx2(InputContainer, { label, children: /* @__PURE__ */ jsx2(
   "input",
   {
     className: `${moduleStyle?.st ?? ""} !border !border-[#00F3FF] !rounded-lg ${className ?? ""}`,
@@ -311,13 +304,13 @@ var InputPhone = ({
 ) });
 
 // src/Forms/TextArea.tsx
-var import_jsx_runtime3 = require("react/jsx-runtime");
+import { jsx as jsx3 } from "react/jsx-runtime";
 var TextArea = ({
   label,
   value,
   onChange,
   placeholder
-}) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+}) => /* @__PURE__ */ jsx3(InputContainer, { label, children: /* @__PURE__ */ jsx3(
   "textarea",
   {
     value,
@@ -327,13 +320,13 @@ var TextArea = ({
 ) });
 
 // src/Forms/Select.tsx
-var import_jsx_runtime4 = require("react/jsx-runtime");
-var Select = ({ label, options, value, onChange }) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)(InputContainer, { label, children: /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("select", { value, onChange: (e) => onChange(e.target.value), children: options.map((opt) => /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("option", { value: opt.value, children: opt.text }, opt.value)) }) });
+import { jsx as jsx4 } from "react/jsx-runtime";
+var Select = ({ label, options, value, onChange }) => /* @__PURE__ */ jsx4(InputContainer, { label, children: /* @__PURE__ */ jsx4("select", { value, onChange: (e) => onChange(e.target.value), children: options.map((opt) => /* @__PURE__ */ jsx4("option", { value: opt.value, children: opt.text }, opt.value)) }) });
 
 // src/Forms/Checkbox.tsx
-var import_jsx_runtime5 = require("react/jsx-runtime");
-var Checkbox = ({ label, checked, onChange }) => /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+import { jsx as jsx5, jsxs as jsxs2 } from "react/jsx-runtime";
+var Checkbox = ({ label, checked, onChange }) => /* @__PURE__ */ jsx5("div", { children: /* @__PURE__ */ jsxs2("label", { children: [
+  /* @__PURE__ */ jsx5(
     "input",
     {
       type: "checkbox",
@@ -345,14 +338,14 @@ var Checkbox = ({ label, checked, onChange }) => /* @__PURE__ */ (0, import_jsx_
 ] }) });
 
 // src/Forms/RadioGroup.tsx
-var import_jsx_runtime6 = require("react/jsx-runtime");
+import { jsx as jsx6, jsxs as jsxs3 } from "react/jsx-runtime";
 var RadioGroup = ({
   name,
   options,
   value,
   onChange
-}) => /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("div", { children: options.map((opt) => /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+}) => /* @__PURE__ */ jsx6("div", { children: options.map((opt) => /* @__PURE__ */ jsxs3("label", { children: [
+  /* @__PURE__ */ jsx6(
     "input",
     {
       type: "radio",
@@ -366,12 +359,12 @@ var RadioGroup = ({
 ] }, opt.value)) });
 
 // src/Forms/Button.tsx
-var import_jsx_runtime7 = require("react/jsx-runtime");
-var Button = ({ label, onClick, type = "button" }) => /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("button", { type, onClick, children: label });
+import { jsx as jsx7 } from "react/jsx-runtime";
+var Button = ({ label, onClick, type = "button" }) => /* @__PURE__ */ jsx7("button", { type, onClick, children: label });
 
 // src/core/schema.tsx
-var import_jsx_runtime8 = require("react/jsx-runtime");
-var import_react2 = require("react");
+import { Fragment, jsx as jsx8 } from "react/jsx-runtime";
+import { createElement } from "react";
 var typeofInput = [
   "button",
   "checkbox",
@@ -404,9 +397,9 @@ function renderElement(value, element, onChange = () => {
   const [tag, props] = Object.entries(element)[0];
   if (props.children) {
     if (typeof props.children === "string") {
-      return import_react.default.createElement(tag, { ...props, key }, props.children);
+      return React.createElement(tag, { ...props, key }, props.children);
     }
-    return import_react.default.createElement(
+    return React.createElement(
       tag,
       { ...props, children: void 0, key },
       props.children.map(
@@ -415,7 +408,7 @@ function renderElement(value, element, onChange = () => {
     );
   }
   if (tag === "textarea" || props.type === "textarea") {
-    return /* @__PURE__ */ (0, import_react2.createElement)(
+    return /* @__PURE__ */ createElement(
       TextArea,
       {
         ...props,
@@ -426,7 +419,7 @@ function renderElement(value, element, onChange = () => {
     );
   }
   if (tag === "select" || props.type === "select") {
-    return /* @__PURE__ */ (0, import_react2.createElement)(
+    return /* @__PURE__ */ createElement(
       Select,
       {
         ...props,
@@ -438,7 +431,7 @@ function renderElement(value, element, onChange = () => {
   }
   if (tag === "input" || typeofInput.includes(tag) || typeofInput.includes(props.type)) {
     if (tag === "checkbox" || props.type === "checkbox") {
-      return /* @__PURE__ */ (0, import_react2.createElement)(
+      return /* @__PURE__ */ createElement(
         Checkbox,
         {
           ...props,
@@ -449,9 +442,9 @@ function renderElement(value, element, onChange = () => {
       );
     }
     if (tag === "button" || props.type === "button" || props.type === "submit" || props.type === "reset" || tag === "submit" || tag === "reset") {
-      return /* @__PURE__ */ (0, import_react2.createElement)(Button, { ...props, key });
+      return /* @__PURE__ */ createElement(Button, { ...props, key });
     }
-    return /* @__PURE__ */ (0, import_react2.createElement)(
+    return /* @__PURE__ */ createElement(
       Input,
       {
         ...props,
@@ -463,7 +456,7 @@ function renderElement(value, element, onChange = () => {
     );
   }
   if (tag === "radio-group") {
-    return /* @__PURE__ */ (0, import_react2.createElement)(
+    return /* @__PURE__ */ createElement(
       RadioGroup,
       {
         ...props,
@@ -473,45 +466,45 @@ function renderElement(value, element, onChange = () => {
       }
     );
   }
-  return import_react.default.createElement(tag, {
+  return React.createElement(tag, {
     ...props,
     key
   });
 }
 function useSchema(value, schema) {
-  const [values, setValues] = (0, import_react.useState)(value);
+  const [values, setValues] = useState(value);
   const handleChange = (name, value2) => {
     setValues((prev) => ({ ...prev, [name]: value2 }));
   };
-  return [values, /* @__PURE__ */ (0, import_jsx_runtime8.jsx)(import_jsx_runtime8.Fragment, { children: renderElement(values, schema, handleChange) })];
+  return [values, /* @__PURE__ */ jsx8(Fragment, { children: renderElement(values, schema, handleChange) })];
 }
 
 // src/hooks/useForm.tsx
-var import_jsx_runtime9 = require("react/jsx-runtime");
+import { jsx as jsx9 } from "react/jsx-runtime";
 function useForm(value, schema) {
-  const [errors, setErrors] = (0, import_react3.useState)({});
+  const [errors, setErrors] = useState2({});
   const [values, renderedForm] = useSchema(
     value,
     schema
   );
-  const form = /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("form", { children: renderedForm });
+  const form = /* @__PURE__ */ jsx9("form", { children: renderedForm });
   return [form, values, errors];
 }
 
 // src/hooks/useCarousel.tsx
-var import_react4 = require("react");
+import { useState as useState3 } from "react";
 
 // src/carousel/ActionIndexCarousel.tsx
-var import_jsx_runtime10 = require("react/jsx-runtime");
+import { jsx as jsx10 } from "react/jsx-runtime";
 var ActionButton = ({
   onClick,
   disabled = false,
   children,
   ariaLabel
-}) => /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("button", { onClick, disabled, "aria-label": ariaLabel, children });
+}) => /* @__PURE__ */ jsx10("button", { onClick, disabled, "aria-label": ariaLabel, children });
 
 // src/carousel/IndexCarousel.tsx
-var import_jsx_runtime11 = require("react/jsx-runtime");
+import { jsx as jsx11, jsxs as jsxs4 } from "react/jsx-runtime";
 var IndexCarousel = ({
   items,
   index,
@@ -524,10 +517,10 @@ var IndexCarousel = ({
   if (items.length === 0) {
     return null;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: `flex justify-center gap-3 items-center ${className}`, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ActionButton, { onClick: () => setIndex(0), ariaLabel: "First", children: "<<" }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ActionButton, { onClick: prev, ariaLabel: "Previous", children: "<" }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: "flex gap-2", children: items.map((_, idx) => idx).filter((idx) => {
+  return /* @__PURE__ */ jsxs4("div", { className: `flex justify-center gap-3 items-center ${className}`, children: [
+    /* @__PURE__ */ jsx11(ActionButton, { onClick: () => setIndex(0), ariaLabel: "First", children: "<<" }),
+    /* @__PURE__ */ jsx11(ActionButton, { onClick: prev, ariaLabel: "Previous", children: "<" }),
+    /* @__PURE__ */ jsx11("div", { className: "flex gap-2", children: items.map((_, idx) => idx).filter((idx) => {
       if (length <= 3) {
         return true;
       }
@@ -538,12 +531,12 @@ var IndexCarousel = ({
         return idx >= length - 3;
       }
       return Math.abs(idx - index) <= 1;
-    }).map((idx) => /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+    }).map((idx) => /* @__PURE__ */ jsx11(
       ActionButton,
       {
         onClick: () => setIndex(idx),
         ariaLabel: `Go to item ${idx + 1}`,
-        children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+        children: /* @__PURE__ */ jsx11(
           "span",
           {
             className: `w-3 h-3 rounded-full border-2 inline-block ${idx === index ? "bg-blue-500 border-blue-500" : "bg-gray-300 border-gray-400"}`
@@ -552,19 +545,19 @@ var IndexCarousel = ({
       },
       idx
     )) }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ActionButton, { onClick: next, ariaLabel: "Next", children: ">" }),
-    /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(ActionButton, { onClick: () => setIndex(length - 1), ariaLabel: "Last", children: ">>" })
+    /* @__PURE__ */ jsx11(ActionButton, { onClick: next, ariaLabel: "Next", children: ">" }),
+    /* @__PURE__ */ jsx11(ActionButton, { onClick: () => setIndex(length - 1), ariaLabel: "Last", children: ">>" })
   ] });
 };
 
 // src/carousel/ItemCarousel.tsx
-var import_jsx_runtime12 = require("react/jsx-runtime");
+import { jsx as jsx12, jsxs as jsxs5 } from "react/jsx-runtime";
 var ItemCarousel = ({ item }) => {
   if (item.type === "text") {
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "p-4 text-center", children: item.content });
+    return /* @__PURE__ */ jsx12("div", { className: "p-4 text-center", children: item.content });
   }
   if (item.type === "image") {
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    return /* @__PURE__ */ jsx12(
       "img",
       {
         src: item.src,
@@ -574,8 +567,8 @@ var ItemCarousel = ({ item }) => {
     );
   }
   if (item.type === "mixed") {
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsxs)("div", { className: "flex flex-col items-center gap-2 p-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+    return /* @__PURE__ */ jsxs5("div", { className: "flex flex-col items-center gap-2 p-4", children: [
+      /* @__PURE__ */ jsx12(
         "img",
         {
           src: item.src,
@@ -583,7 +576,7 @@ var ItemCarousel = ({ item }) => {
           className: "w-full h-auto object-contain"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("div", { className: "text-center", children: item.content })
+      /* @__PURE__ */ jsx12("div", { className: "text-center", children: item.content })
     ] });
   }
   return null;
@@ -591,11 +584,11 @@ var ItemCarousel = ({ item }) => {
 var ItemCarousel_default = ItemCarousel;
 
 // src/carousel/CarouselContainer.tsx
-var import_jsx_runtime13 = require("react/jsx-runtime");
+import { jsx as jsx13 } from "react/jsx-runtime";
 var CarouselContainer = ({
   children,
   className = ""
-}) => /* @__PURE__ */ (0, import_jsx_runtime13.jsx)(
+}) => /* @__PURE__ */ jsx13(
   "div",
   {
     className: `w-full flex flex-col items-center justify-center ${className}`,
@@ -604,7 +597,7 @@ var CarouselContainer = ({
 );
 
 // src/carousel/Carousel.tsx
-var import_jsx_runtime14 = require("react/jsx-runtime");
+import { jsx as jsx14, jsxs as jsxs6 } from "react/jsx-runtime";
 var Carousel = ({
   items,
   className = "",
@@ -619,9 +612,9 @@ var Carousel = ({
   if (items.length === 0) {
     return null;
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(CarouselContainer, { className, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: "w-full h-full flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(ItemCarousel_default, { item: items[index] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
+  return /* @__PURE__ */ jsxs6(CarouselContainer, { className, children: [
+    /* @__PURE__ */ jsx14("div", { className: "w-full h-full flex justify-center", children: /* @__PURE__ */ jsx14(ItemCarousel_default, { item: items[index] }) }),
+    /* @__PURE__ */ jsx14(
       IndexCarousel,
       {
         items,
@@ -637,15 +630,15 @@ var Carousel = ({
 };
 
 // src/hooks/useCarousel.tsx
-var import_jsx_runtime15 = require("react/jsx-runtime");
+import { jsx as jsx15 } from "react/jsx-runtime";
 function useCarousel({
   items,
   className = ""
 }) {
-  const [index, setIndex] = (0, import_react4.useState)(0);
+  const [index, setIndex] = useState3(0);
   const next = () => setIndex((i) => (i + 1) % items.length);
   const prev = () => setIndex((i) => (i - 1 + items.length) % items.length);
-  const html = /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+  const html = /* @__PURE__ */ jsx15(
     Carousel,
     {
       items,
@@ -667,9 +660,8 @@ function useCarousel({
     }
   ];
 }
-// Annotate the CommonJS export names for ESM import in node:
-0 && (module.exports = {
+export {
   useCarousel,
   useForm
-});
-//# sourceMappingURL=index.js.map
+};
+//# sourceMappingURL=index.mjs.map

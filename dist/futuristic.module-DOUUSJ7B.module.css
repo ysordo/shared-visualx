@@ -1,0 +1,64 @@
+.st {
+  position: relative;
+  padding: 15px 30px;
+  background: #0A0A0A;
+  border: none;
+  color: #00F3FF;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.st::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(0, 243, 255, 0.4),
+      transparent);
+  transition: 0.5s;
+}
+
+.st:hover::before {
+  left: 100%;
+}
+
+.st:hover {
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+  /*transform: translateY(-2px);*/
+  animation: neuro-shadow 1s infinite ease-in-out;
+}
+
+@keyframes neuro {
+  0% {
+    left: -100%;
+  }
+
+  50% {
+    left: 100%;
+  }
+
+  100% {
+    left: -100%;
+  }
+}
+
+@keyframes neuro-shadow {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
