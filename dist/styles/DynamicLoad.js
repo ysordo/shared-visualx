@@ -5,7 +5,7 @@ const resolvedModules = Object.entries(stylesMap).reduce((acc, [key, file]) => {
         acc[key] = null; // 👈 este tipo no tendrá estilos
     }
     else {
-        acc[key] = require(`./${file}`);
+        acc[key] = require(`@/styles/${file}`);
     }
     return acc;
 }, {});
