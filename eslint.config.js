@@ -8,7 +8,7 @@ import globals from 'globals';
 export default [
   // Configuración global
   {
-    ignores: ['dist/**', 'node_modules/**', '*.d.ts', '**/*.d.ts'],
+    ignores: ['dist/**', 'node_modules/**', '*.d.ts', '**/*.d.ts','stup.config.ts'],
   },
 
   // Configuración para TypeScript y React
