@@ -1,0 +1,1 @@
+{"version":3,"file":"CarouselContainer.d.ts","sourceRoot":"","sources":["../../src/carousel/CarouselContainer.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,MAAM,OAAO,CAAC;AAE1B,UAAU,sBAAsB;IAC9B,QAAQ,EAAE,KAAK,CAAC,SAAS,CAAC;IAC1B,SAAS,CAAC,EAAE,MAAM,CAAC;CACpB;AAED,eAAO,MAAM,iBAAiB,EAAE,KAAK,CAAC,EAAE,CAAC,sBAAsB,CAQ9D,CAAC"}

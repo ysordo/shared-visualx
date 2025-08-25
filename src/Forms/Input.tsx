@@ -19,6 +19,7 @@ export const Input: React.FC<InputProps> = ({
   styleType = 'simple',
   ...props
 }) => {
+  console.log(styleModules);
   switch (type) {
     case 'text':
       return (

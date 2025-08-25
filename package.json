@@ -17,7 +17,7 @@
     },
     "scripts": {
         "prepublishOnly": "pnpm run build && pnpm run test",
-        "build": "tsc && tsup",
+        "build": "tsc",
         "lint": "eslint src --ext .ts,.tsx",
         "lint:fix": "eslint src --ext .ts,.tsx --fix",
         "docs:generate": "typedoc"
