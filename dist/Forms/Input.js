@@ -1,35 +1,34 @@
+'use client';
 import { jsx as _jsx } from "react/jsx-runtime";
+import { useEffect, useState } from 'react';
 import { InputContainer } from './InputContainer';
 export const Input = ({ type, styleType = 'simple', ...props }) => {
+    const [moduleStyle, setModuleStyle] = useState(null);
+    useEffect(() => {
+        if (styleType !== 'simple') {
+            import(`../styles/${styleType}.module.css`)
+                .then((mod) => setModuleStyle(mod))
+                .catch(() => setModuleStyle(null));
+        }
+        else {
+            setModuleStyle(null);
+        }
+    }, [styleType]);
     switch (type) {
         case 'text':
-            return (_jsx(InputText, { ...props, moduleStyle: styleType !== 'simple'
-                    ? require(`../styles/${styleType}.module.css`)
-                    : null, value: props.value, onChange: props.onChange }));
+            return (_jsx(InputText, { ...props, moduleStyle: moduleStyle, value: props.value, onChange: props.onChange }));
         case 'date':
-            return (_jsx(InputDate, { ...props, moduleStyle: styleType !== 'simple'
-                    ? require(`../styles/${styleType}.module.css`)
-                    : null, value: props.value, onChange: props.onChange }));
+            return (_jsx(InputDate, { ...props, moduleStyle: moduleStyle, value: props.value, onChange: props.onChange }));
         case 'email':
-            return (_jsx(InputEmail, { ...props, moduleStyle: styleType !== 'simple'
-                    ? require(`../styles/${styleType}.module.css`)
-                    : null, value: props.value, onChange: props.onChange }));
+            return (_jsx(InputEmail, { ...props, moduleStyle: moduleStyle, value: props.value, onChange: props.onChange }));
         case 'file':
-            return (_jsx(InputFile, { ...props, moduleStyle: styleType !== 'simple'
-                    ? require(`../styles/${styleType}.module.css`)
-                    : null, onChange: props.onChange }));
+            return (_jsx(InputFile, { ...props, moduleStyle: moduleStyle, onChange: props.onChange }));
         case 'number':
-            return (_jsx(InputNumber, { ...props, moduleStyle: styleType !== 'simple'
-                    ? require(`../styles/${styleType}.module.css`)
-                    : null, value: props.value, onChange: props.onChange }));
+            return (_jsx(InputNumber, { ...props, moduleStyle: moduleStyle, value: props.value, onChange: props.onChange }));
         case 'password':
-            return (_jsx(InputPassword, { ...props, moduleStyle: styleType !== 'simple'
-                    ? require(`../styles/${styleType}.module.css`)
-                    : null, value: props.value, onChange: props.onChange }));
+            return (_jsx(InputPassword, { ...props, moduleStyle: moduleStyle, value: props.value, onChange: props.onChange }));
         case 'phone':
-            return (_jsx(InputPhone, { ...props, moduleStyle: styleType !== 'simple'
-                    ? require(`../styles/${styleType}.module.css`)
-                    : null, value: props.value, onChange: props.onChange }));
+            return (_jsx(InputPhone, { ...props, moduleStyle: moduleStyle, value: props.value, onChange: props.onChange }));
         default:
             return null;
     }
