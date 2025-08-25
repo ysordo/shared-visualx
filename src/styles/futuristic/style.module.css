@@ -1,4 +1,4 @@
-.futuristic {
+.st {
   position: relative;
   padding: 15px 30px;
   background: #0A0A0A;
@@ -11,7 +11,7 @@
   border-radius: 4px;
 }
 
-.futuristic::before {
+.st::before {
   content: '';
   position: absolute;
   top: 0;
@@ -25,11 +25,11 @@
   transition: 0.5s;
 }
 
-.futuristic:hover::before {
+.st:hover::before {
   left: 100%;
 }
 
-.futuristic:hover {
+.st:hover {
   box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
   /*transform: translateY(-2px);*/
   animation: neuro-shadow 1s infinite ease-in-out;

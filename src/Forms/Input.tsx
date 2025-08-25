@@ -96,13 +96,14 @@ interface InputTextProps {
 const InputText: React.FC<InputTextProps> = ({
   label,
   value,
+  moduleStyle,
   onChange,
   placeholder,
   className,
 }) => (
   <InputContainer label={label}>
     <input
-      className={`p-2  ${className ?? ''}`}
+      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="text"
       value={value}
       placeholder={placeholder}
@@ -124,12 +125,13 @@ interface InputDateProps {
 const InputDate: React.FC<InputDateProps> = ({
   label,
   value,
+  moduleStyle,
   onChange,
   className,
 }) => (
   <InputContainer label={label}>
     <input
-      className={`p-2  ${className ?? ''}`}
+      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="date"
       value={value}
       onChange={(e) => onChange(e.target.value)}
@@ -151,13 +153,14 @@ interface InputEmailProps {
 const InputEmail: React.FC<InputEmailProps> = ({
   label,
   value,
+  moduleStyle,
   onChange,
   placeholder,
   className,
 }) => (
   <InputContainer label={label}>
     <input
-      className={`p-2  ${className ?? ''}`}
+      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="email"
       value={value}
       placeholder={placeholder}
@@ -177,12 +180,13 @@ interface InputFileProps {
 
 const InputFile: React.FC<InputFileProps> = ({
   label,
+  moduleStyle,
   onChange,
   className,
 }) => (
   <InputContainer label={label}>
     <input
-      className={`p-2  ${className ?? ''}`}
+      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
     />
@@ -203,13 +207,14 @@ interface InputNumberProps {
 const InputNumber: React.FC<InputNumberProps> = ({
   label,
   value,
+  moduleStyle,
   onChange,
   placeholder,
   className,
 }) => (
   <InputContainer label={label}>
     <input
-      className={`p-2  ${className ?? ''}`}
+      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="number"
       value={value}
       placeholder={placeholder}
@@ -232,13 +237,14 @@ interface InputPasswordProps {
 const InputPassword: React.FC<InputPasswordProps> = ({
   label,
   value,
+  moduleStyle,
   onChange,
   placeholder,
   className,
 }) => (
   <InputContainer label={label}>
     <input
-      className={`p-2  ${className ?? ''}`}
+      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="password"
       value={value}
       placeholder={placeholder}
@@ -261,13 +267,14 @@ interface InputPhoneProps {
 const InputPhone: React.FC<InputPhoneProps> = ({
   label,
   value,
+  moduleStyle,
   onChange,
   placeholder,
   className,
 }) => (
   <InputContainer label={label}>
     <input
-      className={`p-2  ${className ?? ''}`}
+      className={`${moduleStyle?.st ?? ''} !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="tel"
       value={value}
       placeholder={placeholder}
