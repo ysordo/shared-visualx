@@ -51,8 +51,8 @@ input[type="radio"]::after, input[type="checkbox"]::after {
 
 input[type="radio"]::after {
     border-radius: 50%;
-    width: 0.75rem;
-    height: 0.75rem;
+    width: 0.50rem;
+    height: 0.50rem;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -62,11 +62,11 @@ input[type="radio"]::after {
 input[type="checkbox"]::after {
     content: '✓';
     color: green;
-    font-size: 1rem;
-    width: 1.5rem;
-    height: 1.5rem;
-    bottom: 0.25rem;
-    left: 0.25rem;
+    font-size: 3rem;
+    width: 1rem;
+    height: 1rem;
+    bottom: 2px;
+    left: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
