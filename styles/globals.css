@@ -23,9 +23,16 @@ input[type="radio"] {
     width: 0.5rem;
     height: 0.5rem;
     border: 2px solid var(--base-200);
-    border-radius: 999999px;
     background-color: transparent;
     transition: background-color 0.2s, border-color 0.2s;
+}
+
+input[type="checkbox"] {
+    border-radius: 4px;
+}
+
+input[type="radio"] {
+    border-radius: 100%;
 }
 
 input[type="checkbox"]:checked,
