@@ -71,7 +71,7 @@ select.futuristic:focus {
     border-radius: 4px;
 }
 
-.futuristic :has(input[type="checkbox"], input[type="radio"]) {
+.futuristic:has(input[type="checkbox"], input[type="radio"]) {
     display: flex;
     align-items: center;
     gap: 1rem;
