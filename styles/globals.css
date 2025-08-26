@@ -18,6 +18,22 @@ button {
     box-sizing: border-box;
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 2px solid var(--base-200);
+    border-radius: 999999px;
+    background-color: transparent;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+    background-color: var(--violet);
+    border-color: var(--violet);
+}
+
 input:hover,
 textarea:hover,
 select:hover {
