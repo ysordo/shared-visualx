@@ -1,6 +1,7 @@
 import { InputContainer } from './InputContainer';
 
 interface TextAreaProps {
+  name: string;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -8,12 +9,13 @@ interface TextAreaProps {
 }
 
 export const TextArea: React.FC<TextAreaProps> = ({
+  name,
   label,
   value,
   onChange,
   placeholder,
 }) => (
-  <InputContainer label={label}>
+  <InputContainer name={name} label={label}>
     <textarea
       value={value}
       placeholder={placeholder}

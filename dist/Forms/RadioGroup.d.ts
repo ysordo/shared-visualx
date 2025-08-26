@@ -3,7 +3,6 @@ import '../../styles/globals.css';
 interface RadioOption {
     value: string;
     label: string;
-    name: string;
 }
 interface RadioGroupProps {
     options: RadioOption[];

@@ -1,5 +1,6 @@
 import React from 'react';
 interface SelectProps {
+    name: string;
     label: string;
     options: {
         value: string;

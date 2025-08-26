@@ -87,6 +87,7 @@ export const Input: React.FC<InputProps> = ({
 };
 
 interface InputTextProps {
+  name: string;
   className?: string;
   moduleStyle?: string;
   label: string;
@@ -96,6 +97,7 @@ interface InputTextProps {
 }
 
 const InputText: React.FC<InputTextProps> = ({
+  name,
   label,
   value,
   moduleStyle,
@@ -103,7 +105,7 @@ const InputText: React.FC<InputTextProps> = ({
   placeholder,
   className,
 }) => (
-  <InputContainer label={label}>
+  <InputContainer name={name} label={label}>
     <input
       className={`${
         moduleStyle ?? ''
@@ -117,6 +119,7 @@ const InputText: React.FC<InputTextProps> = ({
 );
 
 interface InputDateProps {
+  name: string;
   className?: string;
   moduleStyle?: string;
   label: string;
@@ -125,13 +128,14 @@ interface InputDateProps {
 }
 
 const InputDate: React.FC<InputDateProps> = ({
+  name,
   label,
   value,
   moduleStyle,
   onChange,
   className,
 }) => (
-  <InputContainer label={label}>
+  <InputContainer name={name} label={label}>
     <input
       className={`${
         moduleStyle ?? ''
@@ -144,6 +148,7 @@ const InputDate: React.FC<InputDateProps> = ({
 );
 
 interface InputEmailProps {
+  name: string;
   className?: string;
   moduleStyle?: string;
   label: string;
@@ -153,6 +158,7 @@ interface InputEmailProps {
 }
 
 const InputEmail: React.FC<InputEmailProps> = ({
+  name,
   label,
   value,
   moduleStyle,
@@ -160,7 +166,7 @@ const InputEmail: React.FC<InputEmailProps> = ({
   placeholder,
   className,
 }) => (
-  <InputContainer label={label}>
+  <InputContainer name={name} label={label}>
     <input
       className={`${
         moduleStyle ?? ''
@@ -174,6 +180,7 @@ const InputEmail: React.FC<InputEmailProps> = ({
 );
 
 interface InputFileProps {
+  name: string;
   className?: string;
   moduleStyle?: string;
   label: string;
@@ -181,12 +188,13 @@ interface InputFileProps {
 }
 
 const InputFile: React.FC<InputFileProps> = ({
+  name,
   label,
   moduleStyle,
   onChange,
   className,
 }) => (
-  <InputContainer label={label}>
+  <InputContainer name={name} label={label}>
     <input
       className={`${
         moduleStyle ?? ''
@@ -198,6 +206,7 @@ const InputFile: React.FC<InputFileProps> = ({
 );
 
 interface InputNumberProps {
+  name: string;
   className?: string;
   moduleStyle?: string;
   label: string;
@@ -207,6 +216,7 @@ interface InputNumberProps {
 }
 
 const InputNumber: React.FC<InputNumberProps> = ({
+  name,
   label,
   value,
   moduleStyle,
@@ -214,7 +224,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
   placeholder,
   className,
 }) => (
-  <InputContainer label={label}>
+  <InputContainer name={name} label={label}>
     <input
       className={`${
         moduleStyle ?? ''
@@ -228,6 +238,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
 );
 
 interface InputPasswordProps {
+  name: string;
   className?: string;
   moduleStyle?: string;
   label: string;
@@ -237,6 +248,7 @@ interface InputPasswordProps {
 }
 
 const InputPassword: React.FC<InputPasswordProps> = ({
+  name,
   label,
   value,
   moduleStyle,
@@ -244,7 +256,7 @@ const InputPassword: React.FC<InputPasswordProps> = ({
   placeholder,
   className,
 }) => (
-  <InputContainer label={label}>
+  <InputContainer name={name} label={label}>
     <input
       className={`${
         moduleStyle ?? ''
@@ -258,6 +270,7 @@ const InputPassword: React.FC<InputPasswordProps> = ({
 );
 
 interface InputPhoneProps {
+  name: string;
   className?: string;
   moduleStyle?: string;
   label: string;
@@ -267,6 +280,7 @@ interface InputPhoneProps {
 }
 
 const InputPhone: React.FC<InputPhoneProps> = ({
+  name,
   label,
   value,
   moduleStyle,
@@ -274,7 +288,7 @@ const InputPhone: React.FC<InputPhoneProps> = ({
   placeholder,
   className,
 }) => (
-  <InputContainer label={label}>
+  <InputContainer name={name} label={label}>
     <input
       className={`${
         moduleStyle ?? ''

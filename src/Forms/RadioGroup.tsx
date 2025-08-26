@@ -4,7 +4,6 @@ import '../../styles/globals.css';
 interface RadioOption {
   value: string;
   label: string;
-  name: string;
 }
 
 interface RadioGroupProps {
@@ -27,14 +26,13 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
       <label
         key={opt.value}
         htmlFor={opt.value}
-        className={`!flex !items-center !gap-4 !py-1 ${styleType} ${className}`}>
+        className={`${styleType} ${className}`}>
         <input
           type="radio"
           name={opt.value}
           value={opt.value}
           checked={value === opt.value}
           onChange={() => onChange(opt.value)}
-          className=""
         />
         {opt.label}
       </label>
