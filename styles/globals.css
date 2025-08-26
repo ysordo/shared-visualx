@@ -16,6 +16,12 @@ button {
     box-sizing: border-box;
 }
 
+input:hover,
+textarea:hover,
+select:hover {
+    cursor: pointer;
+}
+
 input:focus,
 textarea:focus,
 select:focus {

@@ -93,6 +93,16 @@ function renderElement(
         />
       );
     }
+    if(tag === 'radio-group' || props.type === 'radio-group') {
+      return (
+        <RadioGroup
+          {...props}
+          onChange={(_val) => onChange(props.name, _val)}
+          value={value[props.name]}
+          key={key}
+        />
+      );
+    }
     if (
       tag === 'button' ||
       props.type === 'button' ||

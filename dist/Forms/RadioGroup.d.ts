@@ -3,9 +3,9 @@ import '../../styles/globals.css';
 interface RadioOption {
     value: string;
     label: string;
+    name: string;
 }
 interface RadioGroupProps {
-    name: string;
     options: RadioOption[];
     value: string;
     styleType?: 'futuristic' | 'simple';
