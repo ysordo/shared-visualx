@@ -1,7 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 import { InputContainer } from './InputContainer';
-import { styleModules, type StyleType } from '../styles/DynamicLoad';
+import '../../styles/globals.css';
 
 interface InputProps {
   type: 'text' | 'date' | 'email' | 'file' | 'number' | 'password' | 'phone';
@@ -11,21 +10,20 @@ interface InputProps {
   onChange?: (value: string | number | File | null) => void;
   placeholder?: string;
   className?: string;
-  styleType?: StyleType;
+  styleType?: 'futuristic' | 'simple';
 }
 
 export const Input: React.FC<InputProps> = ({
   type,
-  styleType = 'simple',
+  styleType,
   ...props
 }) => {
-  console.log(styleModules);
   switch (type) {
     case 'text':
       return (
         <InputText
           {...props}
-          moduleStyle={styleModules[styleType]}
+          moduleStyle={styleType}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -34,7 +32,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputDate
           {...props}
-          moduleStyle={styleModules[styleType]}
+          moduleStyle={styleType}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -43,7 +41,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputEmail
           {...props}
-          moduleStyle={styleModules[styleType]}
+          moduleStyle={styleType}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -52,7 +50,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputFile
           {...props}
-          moduleStyle={styleModules[styleType]}
+          moduleStyle={styleType}
           onChange={props.onChange as (file: File | null) => void}
         />
       );
@@ -60,7 +58,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputNumber
           {...props}
-          moduleStyle={styleModules[styleType]}
+          moduleStyle={styleType}
           value={props.value as number}
           onChange={props.onChange as (value: number) => void}
         />
@@ -69,7 +67,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputPassword
           {...props}
-          moduleStyle={styleModules[styleType]}
+          moduleStyle={styleType}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -78,7 +76,7 @@ export const Input: React.FC<InputProps> = ({
       return (
         <InputPhone
           {...props}
-          moduleStyle={styleModules[styleType]}
+          moduleStyle={styleType}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
         />
@@ -90,9 +88,7 @@ export const Input: React.FC<InputProps> = ({
 
 interface InputTextProps {
   className?: string;
-  moduleStyle: {
-    readonly [key: string]: string;
-  } | null;
+  moduleStyle?: string;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -110,7 +106,7 @@ const InputText: React.FC<InputTextProps> = ({
   <InputContainer label={label}>
     <input
       className={`${
-        moduleStyle?.st ?? ''
+        moduleStyle ?? ''
       } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="text"
       value={value}
@@ -122,9 +118,7 @@ const InputText: React.FC<InputTextProps> = ({
 
 interface InputDateProps {
   className?: string;
-  moduleStyle: {
-    readonly [key: string]: string;
-  } | null;
+  moduleStyle?: string;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -140,7 +134,7 @@ const InputDate: React.FC<InputDateProps> = ({
   <InputContainer label={label}>
     <input
       className={`${
-        moduleStyle?.st ?? ''
+        moduleStyle ?? ''
       } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="date"
       value={value}
@@ -151,9 +145,7 @@ const InputDate: React.FC<InputDateProps> = ({
 
 interface InputEmailProps {
   className?: string;
-  moduleStyle: {
-    readonly [key: string]: string;
-  } | null;
+  moduleStyle?: string;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -171,7 +163,7 @@ const InputEmail: React.FC<InputEmailProps> = ({
   <InputContainer label={label}>
     <input
       className={`${
-        moduleStyle?.st ?? ''
+        moduleStyle ?? ''
       } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="email"
       value={value}
@@ -183,9 +175,7 @@ const InputEmail: React.FC<InputEmailProps> = ({
 
 interface InputFileProps {
   className?: string;
-  moduleStyle: {
-    readonly [key: string]: string;
-  } | null;
+  moduleStyle?: string;
   label: string;
   onChange: (file: File | null) => void;
 }
@@ -199,7 +189,7 @@ const InputFile: React.FC<InputFileProps> = ({
   <InputContainer label={label}>
     <input
       className={`${
-        moduleStyle?.st ?? ''
+        moduleStyle ?? ''
       } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
@@ -209,9 +199,7 @@ const InputFile: React.FC<InputFileProps> = ({
 
 interface InputNumberProps {
   className?: string;
-  moduleStyle: {
-    readonly [key: string]: string;
-  } | null;
+  moduleStyle?: string;
   label: string;
   value: number;
   onChange: (value: number) => void;
@@ -229,7 +217,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
   <InputContainer label={label}>
     <input
       className={`${
-        moduleStyle?.st ?? ''
+        moduleStyle ?? ''
       } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="number"
       value={value}
@@ -241,9 +229,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
 
 interface InputPasswordProps {
   className?: string;
-  moduleStyle: {
-    readonly [key: string]: string;
-  } | null;
+  moduleStyle?: string;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -261,7 +247,7 @@ const InputPassword: React.FC<InputPasswordProps> = ({
   <InputContainer label={label}>
     <input
       className={`${
-        moduleStyle?.st ?? ''
+        moduleStyle ?? ''
       } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="password"
       value={value}
@@ -273,9 +259,7 @@ const InputPassword: React.FC<InputPasswordProps> = ({
 
 interface InputPhoneProps {
   className?: string;
-  moduleStyle: {
-    readonly [key: string]: string;
-  } | null;
+  moduleStyle?: string;
   label: string;
   value: string;
   onChange: (value: string) => void;
@@ -293,7 +277,7 @@ const InputPhone: React.FC<InputPhoneProps> = ({
   <InputContainer label={label}>
     <input
       className={`${
-        moduleStyle?.st ?? ''
+        moduleStyle ?? ''
       } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
       type="tel"
       value={value}
