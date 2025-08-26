@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 :root {
     --base-100: #0A0A0A;
     --base-200: #00F3FF;
