@@ -85,13 +85,14 @@ input[type="checkbox"]::after {
 }
 
 input[type="checkbox"]::before {
-    width: .75rem;
-    height: .75rem;
-    top: -50%;
-    right: -50%;
+    width: 8px;
+    height: 8px;
+    top: -3px;
+    right: -3px;
     opacity: 0;
     background-color: var(--background);
     z-index: 1;
+    border-radius: 4px;
 }
 
 .futuristic input[type="radio"]::after {
@@ -100,10 +101,7 @@ input[type="checkbox"]::before {
 
 
 input[type="checkbox"]:checked::after,
-input[type="radio"]:checked::after {
-    opacity: 1;
-}
-
+input[type="radio"]:checked::after,
 input[type="checkbox"]:checked::before {
     opacity: 1;
 }
