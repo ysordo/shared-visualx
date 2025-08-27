@@ -1,4 +1,4 @@
-import type { HTMLElementType, HTMLInputTypeAttribute, JSX } from 'react';
+import type { HTMLElementType, HTMLInputTypeAttribute, JSX } from "react";
 export declare function useSchema(value: {
     [key: string]: unknown;
 }, schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>, styleType?: string): [Record<string, unknown>, JSX.Element];
