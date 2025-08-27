@@ -100,9 +100,9 @@ input[type="checkbox"]::before {
 }
 
 
-input[type="checkbox"]:checked::after,
+input[type="checkbox"][checked=true]::after,
 input[type="radio"]:checked::after,
-input[type="checkbox"]:checked::before {
+input[type="checkbox"][checked=true]::before {
     opacity: 1;
 }
 

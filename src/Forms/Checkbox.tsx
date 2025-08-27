@@ -11,16 +11,20 @@ import '../../styles/globals.css';
  * @param onChange - Function to call when the checkbox state changes
  * @returns A styled checkbox input with a label
  */
-export const Checkbox: React.FC<CheckboxProps> = ({ name, label, checked, styleType, className, onChange }) => (
+export const Checkbox: React.FC<CheckboxProps> = ({
+  name,
+  label,
+  checked,
+  styleType,
+  className,
+  onChange,
+}) => (
   <div>
-    <label
-      htmlFor={name}
-      className={`${styleType} ${className}`}
-    >
+    <label htmlFor={name} className={`${styleType} ${className}`}>
       <input
         type="checkbox"
         checked={checked}
-        onChange={e => onChange(e.target.checked)}
+        onChange={() => onChange(!checked)}
       />
       {label}
     </label>
