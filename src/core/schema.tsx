@@ -162,8 +162,14 @@ export function useSchema(
   return [
     values,
     <>
-      {Object.entries(schema).map((value, index) =>
-        renderElement(values, value, handleChange, styleType, String(index))
+      {Object.entries(schema).map(([[key, value]], index) =>
+        renderElement(
+          values,
+          { [key]: value },
+          handleChange,
+          styleType,
+          String(index)
+        )
       )}
     </>,
   ];

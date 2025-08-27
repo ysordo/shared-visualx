@@ -83,7 +83,7 @@ export function useSchema(value, schema, styleType) {
     };
     return [
         values,
-        _jsx(_Fragment, { children: Object.entries(schema).map((value, index) => renderElement(values, value, handleChange, styleType, String(index))) }),
+        _jsx(_Fragment, { children: Object.entries(schema).map(([[key, value]], index) => renderElement(values, { [key]: value }, handleChange, styleType, String(index))) }),
     ];
 }
 //# sourceMappingURL=schema.js.map
