@@ -100,7 +100,7 @@ const InputText: React.FC<InputTextProps> = ({
     <input
       className={`${
         styleType ?? ''
-      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      } ${className ?? ''}`}
       type="text"
       value={value}
       placeholder={placeholder}
@@ -121,7 +121,7 @@ const InputDate: React.FC<InputDateProps> = ({
     <input
       className={`${
         styleType ?? ''
-      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      } ${className ?? ''}`}
       type="date"
       value={value}
       onChange={(e) => onChange(e.target.value)}
@@ -142,7 +142,7 @@ const InputEmail: React.FC<InputEmailProps> = ({
     <input
       className={`${
         styleType ?? ''
-      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      } ${className ?? ''}`}
       type="email"
       value={value}
       placeholder={placeholder}
@@ -162,7 +162,7 @@ const InputFile: React.FC<InputFileProps> = ({
     <input
       className={`${
         styleType ?? ''
-      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      } ${className ?? ''}`}
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
     />
@@ -182,7 +182,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
     <input
       className={`${
         styleType ?? ''
-      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      } ${className ?? ''}`}
       type="number"
       value={value}
       placeholder={placeholder}
@@ -204,7 +204,7 @@ const InputPassword: React.FC<InputPasswordProps> = ({
     <input
       className={`${
         styleType ?? ''
-      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      } ${className ?? ''}`}
       type="password"
       value={value}
       placeholder={placeholder}
@@ -226,7 +226,7 @@ const InputPhone: React.FC<InputPhoneProps> = ({
     <input
       className={`${
         styleType ?? ''
-      } !border !border-[#00F3FF] !rounded-lg ${className ?? ''}`}
+      } ${className ?? ''}`}
       type="tel"
       value={value}
       placeholder={placeholder}

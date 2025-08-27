@@ -161,6 +161,10 @@ export function useSchema(
 
   return [
     values,
-    <>{renderElement(values, schema, handleChange, styleType)}</>,
+    <>
+      {Object.entries(schema).map((value, index) =>
+        renderElement(values, value, handleChange, styleType, String(index))
+      )}
+    </>,
   ];
 }
