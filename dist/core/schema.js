@@ -36,12 +36,6 @@ function renderElement(value, element, onChange = () => { }, styleType, key) {
         return null;
     }
     const [tag, props] = Object.entries(element)[0];
-    if (props.children) {
-        if (typeof props.children === 'string') {
-            return React.createElement(tag, { ...props, key }, props.children);
-        }
-        return React.createElement(tag, { ...props, children: undefined, key }, props.children.map((child, idx) => renderElement(value, child, onChange, styleType, `${idx}`)));
-    }
     if (tag === 'button' ||
         props.type === 'button' ||
         props.type === 'submit' ||
@@ -70,6 +64,12 @@ function renderElement(value, element, onChange = () => { }, styleType, key) {
     }
     if (tag === 'radio-group') {
         return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
+    }
+    if (props.children) {
+        if (typeof props.children === 'string') {
+            return React.createElement(tag, { ...props, key }, props.children);
+        }
+        return React.createElement(tag, { ...props, children: undefined, key }, props.children.map((child, idx) => renderElement(value, child, onChange, styleType, `${idx}`)));
     }
     return React.createElement(tag, {
         ...props,

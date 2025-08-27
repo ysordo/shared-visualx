@@ -1,6 +1,6 @@
 interface ButtonProps {
-  label: string;
-  onClick: () => void;
+  children: string;
+  onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   styleType?: 'futuristic' | 'simple';
 }

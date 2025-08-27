@@ -9,8 +9,8 @@ import '../../styles/globals.css';
  * @param styleType - Optional style type for the button
  * @returns A styled button element
  */
-export const Button: React.FC<ButtonProps> = ({ label, onClick, type = 'button', styleType }) => (
+export const Button: React.FC<ButtonProps> = ({ children, onClick, type = 'button', styleType }) => (
   <button type={type} onClick={onClick} className={`${styleType}`}>
-    {label}
+    {children}
   </button>
 );

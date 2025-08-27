@@ -45,20 +45,6 @@ function renderElement(
 
   const [tag, props] = Object.entries(element as Record<string, any>)[0];
 
-  if (props.children) {
-    if (typeof props.children === 'string') {
-      return React.createElement(tag, { ...props, key }, props.children);
-    }
-
-    return React.createElement(
-      tag,
-      { ...props, children: undefined, key },
-      (props.children as unknown[]).map((child, idx) =>
-        renderElement(value, child, onChange, styleType, `${idx}`)
-      )
-    );
-  }
-
   if (
     tag === 'button' ||
     props.type === 'button' ||
@@ -141,6 +127,20 @@ function renderElement(
         key={key}
         styleType={styleType}
       />
+    );
+  }
+  
+  if (props.children) {
+    if (typeof props.children === 'string') {
+      return React.createElement(tag, { ...props, key }, props.children);
+    }
+
+    return React.createElement(
+      tag,
+      { ...props, children: undefined, key },
+      (props.children as unknown[]).map((child, idx) =>
+        renderElement(value, child, onChange, styleType, `${idx}`)
+      )
     );
   }
 

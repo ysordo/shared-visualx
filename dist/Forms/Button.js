@@ -8,5 +8,5 @@ import '../../styles/globals.css';
  * @param styleType - Optional style type for the button
  * @returns A styled button element
  */
-export const Button = ({ label, onClick, type = 'button', styleType }) => (_jsx("button", { type: type, onClick: onClick, className: `${styleType}`, children: label }));
+export const Button = ({ children, onClick, type = 'button', styleType }) => (_jsx("button", { type: type, onClick: onClick, className: `${styleType}`, children: children }));
 //# sourceMappingURL=Button.js.map
