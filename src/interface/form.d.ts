@@ -3,6 +3,7 @@ interface ButtonProps {
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   styleType?: 'futuristic' | 'simple';
+  className?: string;
 }
 
 interface CheckboxProps {

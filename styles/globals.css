@@ -64,8 +64,6 @@ input[type="radio"]::after {
 
 input[type="checkbox"]::after {
     content: '✓';
-    color: green;
-    font-size: 2.5rem;
     width: 1rem;
     height: 1rem;
     bottom: 4px;
@@ -80,8 +78,14 @@ input[type="checkbox"]::after {
     z-index: 2;
 }
 
-.futuristic input[type="checkbox"]::after {
+*>input[type="checkbox"]::after {
+    color: green;
+    font-size: 2rem;
+}
+
+.futuristic>input[type="checkbox"]::after {
     color: var(--base-200);
+    font-size: 2.5rem;
 }
 
 input[type="checkbox"]::before {
@@ -95,14 +99,18 @@ input[type="checkbox"]::before {
     border-radius: 4px;
 }
 
-.futuristic input[type="radio"]::after {
+*>input[type="radio"]::after {
+    background-color: green;
+}
+
+.futuristic>input[type="radio"]::after {
     background-color: var(--base-200);
 }
 
 
-input[type="checkbox"][checked=true]::after,
+input[type="checkbox"]:checked::after,
 input[type="radio"]:checked::after,
-input[type="checkbox"][checked=true]::before {
+input[type="checkbox"]:checked::before {
     opacity: 1;
 }
 
@@ -142,7 +150,7 @@ button.futuristic {
     border-radius: 50%;
 }
 
-.futuristic:has(input[type="checkbox"], input[type="radio"]) {
+*:has(>input[type="checkbox"], >input[type="radio"]) {
     display: flex;
     align-items: center;
     gap: 1rem;
