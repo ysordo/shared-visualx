@@ -1,10 +1,3 @@
-interface TextAreaProps {
-    name: string;
-    label: string;
-    value: string;
-    onChange: (value: string) => void;
-    placeholder?: string;
-}
+import '../../styles/globals.css';
 export declare const TextArea: React.FC<TextAreaProps>;
-export {};
 //# sourceMappingURL=TextArea.d.ts.map

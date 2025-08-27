@@ -1,13 +1,16 @@
 import React from 'react';
+import '../../styles/globals.css';
 
-interface ButtonProps {
-  label: string;
-  onClick: () => void;
-  type?: 'button' | 'submit' | 'reset';
-}
-
-export const Button: React.FC<ButtonProps> = ({ label, onClick, type = 'button' }) => (
-  <button type={type} onClick={onClick}>
+/**
+ * Button Component
+ * @param label - The text to display on the button
+ * @param onClick - Function to call when the button is clicked
+ * @param type - The button type (button, submit, reset)
+ * @param styleType - Optional style type for the button
+ * @returns A styled button element
+ */
+export const Button: React.FC<ButtonProps> = ({ label, onClick, type = 'button', styleType }) => (
+  <button type={type} onClick={onClick} className={`${styleType}`}>
     {label}
   </button>
 );

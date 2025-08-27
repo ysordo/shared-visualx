@@ -1,12 +1,6 @@
 import { InputContainer } from './InputContainer';
+import '../../styles/globals.css';
 
-interface TextAreaProps {
-  name: string;
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  placeholder?: string;
-}
 
 export const TextArea: React.FC<TextAreaProps> = ({
   name,
@@ -14,12 +8,14 @@ export const TextArea: React.FC<TextAreaProps> = ({
   value,
   onChange,
   placeholder,
+  styleType
 }) => (
   <InputContainer name={name} label={label}>
     <textarea
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
+      className={`${styleType}`}
     />
   </InputContainer>
 );

@@ -36,6 +36,7 @@ function renderElement(
   value: Record<string, unknown>,
   element: unknown,
   onChange: (name: string, value: unknown) => void = () => {},
+  styleType?: string,
   key?: string
 ): JSX.Element | null {
   if (!element) {
@@ -53,7 +54,7 @@ function renderElement(
       tag,
       { ...props, children: undefined, key },
       (props.children as unknown[]).map((child, idx) =>
-        renderElement(value, child, onChange, `${idx}`)
+        renderElement(value, child, onChange, styleType, `${idx}`)
       )
     );
   }
@@ -65,6 +66,7 @@ function renderElement(
         onChange={(_val) => onChange(props.name, _val)}
         value={value[props.name]}
         key={key}
+        styleType={styleType}
       />
     );
   }
@@ -90,16 +92,18 @@ function renderElement(
           onChange={(_val) => onChange(props.name, _val)}
           value={value[props.name]}
           key={key}
+          styleType={styleType}
         />
       );
     }
-    if(tag === 'radio-group' || props.type === 'radio-group') {
+    if (tag === 'radio-group' || props.type === 'radio-group') {
       return (
         <RadioGroup
           {...props}
           onChange={(_val) => onChange(props.name, _val)}
           value={value[props.name]}
           key={key}
+          styleType={styleType}
         />
       );
     }
@@ -111,7 +115,7 @@ function renderElement(
       tag === 'submit' ||
       tag === 'reset'
     ) {
-      return <Button {...props} key={key} />;
+      return <Button {...props} key={key} styleType={styleType} />;
     }
     return (
       <Input
@@ -123,6 +127,7 @@ function renderElement(
         onChange={(_val) => onChange(props.name, _val)}
         value={value[props.name]}
         key={key}
+        styleType={styleType}
       />
     );
   }
@@ -133,6 +138,7 @@ function renderElement(
         onChange={(_val) => onChange(props.name, _val)}
         value={value[props.name]}
         key={key}
+        styleType={styleType}
       />
     );
   }
@@ -145,12 +151,16 @@ function renderElement(
 
 export function useSchema(
   value: { [key: string]: unknown },
-  schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>
+  schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>,
+  styleType?: string
 ): [Record<string, unknown>, JSX.Element] {
   const [values, setValues] = useState(value);
   const handleChange = (name: string, value: unknown) => {
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
-  return [values, <>{renderElement(values, schema, handleChange)}</>];
+  return [
+    values,
+    <>{renderElement(values, schema, handleChange, styleType)}</>,
+  ];
 }

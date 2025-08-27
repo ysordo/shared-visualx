@@ -107,6 +107,7 @@ input[type="checkbox"]:checked::before {
 }
 
 input:hover,
+button:hover,
 textarea:hover,
 select:hover {
     cursor: pointer;
@@ -129,6 +130,13 @@ select.futuristic:focus {
     overflow: hidden;
     transition: 0.3s;
     border-radius: 4px;
+}
+
+button.futuristic,
+input[type='button'].futuristic,
+input[type='reset'].futuristic,
+input[type='submit'].futuristic {
+    border-radius: 50%;
 }
 
 .futuristic:has(input[type="checkbox"], input[type="radio"]) {

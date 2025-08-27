@@ -31,7 +31,7 @@ const typeofInput = [
     'url',
     'week',
 ];
-function renderElement(value, element, onChange = () => { }, key) {
+function renderElement(value, element, onChange = () => { }, styleType, key) {
     if (!element) {
         return null;
     }
@@ -40,10 +40,10 @@ function renderElement(value, element, onChange = () => { }, key) {
         if (typeof props.children === 'string') {
             return React.createElement(tag, { ...props, key }, props.children);
         }
-        return React.createElement(tag, { ...props, children: undefined, key }, props.children.map((child, idx) => renderElement(value, child, onChange, `${idx}`)));
+        return React.createElement(tag, { ...props, children: undefined, key }, props.children.map((child, idx) => renderElement(value, child, onChange, styleType, `${idx}`)));
     }
     if (tag === 'textarea' || props.type === 'textarea') {
-        return (_createElement(TextArea, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+        return (_createElement(TextArea, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
     }
     if (tag === 'select' || props.type === 'select') {
         return (_createElement(Select, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
@@ -52,10 +52,10 @@ function renderElement(value, element, onChange = () => { }, key) {
         typeofInput.includes(tag) ||
         typeofInput.includes(props.type)) {
         if (tag === 'checkbox' || props.type === 'checkbox') {
-            return (_createElement(Checkbox, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+            return (_createElement(Checkbox, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
         }
         if (tag === 'radio-group' || props.type === 'radio-group') {
-            return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+            return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
         }
         if (tag === 'button' ||
             props.type === 'button' ||
@@ -63,24 +63,27 @@ function renderElement(value, element, onChange = () => { }, key) {
             props.type === 'reset' ||
             tag === 'submit' ||
             tag === 'reset') {
-            return _createElement(Button, { ...props, key: key });
+            return _createElement(Button, { ...props, key: key, styleType: styleType });
         }
         return (_createElement(Input, { ...props, type: props.type ??
-                tag, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+                tag, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
     }
     if (tag === 'radio-group') {
-        return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key }));
+        return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
     }
     return React.createElement(tag, {
         ...props,
         key,
     });
 }
-export function useSchema(value, schema) {
+export function useSchema(value, schema, styleType) {
     const [values, setValues] = useState(value);
     const handleChange = (name, value) => {
         setValues((prev) => ({ ...prev, [name]: value }));
     };
-    return [values, _jsx(_Fragment, { children: renderElement(values, schema, handleChange) })];
+    return [
+        values,
+        _jsx(_Fragment, { children: renderElement(values, schema, handleChange, styleType) }),
+    ];
 }
 //# sourceMappingURL=schema.js.map
