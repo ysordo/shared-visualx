@@ -1,35 +1,35 @@
-import type { HTMLElementType, HTMLInputTypeAttribute, JSX } from "react";
-import React, { useState } from "react";
-import { Input } from "../Forms/Input";
-import { TextArea } from "../Forms/TextArea";
-import { Select } from "../Forms/Select";
-import { Checkbox } from "../Forms/Checkbox";
-import { RadioGroup } from "../Forms/RadioGroup";
-import { Button } from "../Forms/Button";
+import type { HTMLElementType, HTMLInputTypeAttribute, JSX } from 'react';
+import React, { useState } from 'react';
+import { Input } from '../Forms/Input';
+import { TextArea } from '../Forms/TextArea';
+import { Select } from '../Forms/Select';
+import { Checkbox } from '../Forms/Checkbox';
+import { RadioGroup } from '../Forms/RadioGroup';
+import { Button } from '../Forms/Button';
 
 const typeofInput = [
-  "button",
-  "checkbox",
-  "color",
-  "date",
-  "datetime-local",
-  "email",
-  "file",
-  "hidden",
-  "image",
-  "month",
-  "number",
-  "password",
-  "radio",
-  "range",
-  "reset",
-  "search",
-  "submit",
-  "tel",
-  "text",
-  "time",
-  "url",
-  "week",
+  'button',
+  'checkbox',
+  'color',
+  'date',
+  'datetime-local',
+  'email',
+  'file',
+  'hidden',
+  'image',
+  'month',
+  'number',
+  'password',
+  'radio',
+  'range',
+  'reset',
+  'search',
+  'submit',
+  'tel',
+  'text',
+  'time',
+  'url',
+  'week',
 ] as const;
 
 function renderElement(
@@ -46,7 +46,7 @@ function renderElement(
   const [tag, props] = Object.entries(element as Record<string, any>)[0];
 
   if (props.children) {
-    if (typeof props.children === "string") {
+    if (typeof props.children === 'string') {
       return React.createElement(tag, { ...props, key }, props.children);
     }
 
@@ -59,7 +59,18 @@ function renderElement(
     );
   }
 
-  if (tag === "textarea" || props.type === "textarea") {
+  if (
+    tag === 'button' ||
+    props.type === 'button' ||
+    props.type === 'submit' ||
+    props.type === 'reset' ||
+    tag === 'submit' ||
+    tag === 'reset'
+  ) {
+    return <Button {...props} key={key} styleType={styleType} />;
+  }
+
+  if (tag === 'textarea' || props.type === 'textarea') {
     return (
       <TextArea
         {...props}
@@ -70,7 +81,7 @@ function renderElement(
       />
     );
   }
-  if (tag === "select" || props.type === "select") {
+  if (tag === 'select' || props.type === 'select') {
     return (
       <Select
         {...props}
@@ -81,11 +92,11 @@ function renderElement(
     );
   }
   if (
-    tag === "input" ||
+    tag === 'input' ||
     typeofInput.includes(tag as never) ||
     typeofInput.includes(props.type as never)
   ) {
-    if (tag === "checkbox" || props.type === "checkbox") {
+    if (tag === 'checkbox' || props.type === 'checkbox') {
       return (
         <Checkbox
           {...props}
@@ -96,7 +107,7 @@ function renderElement(
         />
       );
     }
-    if (tag === "radio-group" || props.type === "radio-group") {
+    if (tag === 'radio-group' || props.type === 'radio-group') {
       return (
         <RadioGroup
           {...props}
@@ -106,16 +117,6 @@ function renderElement(
           styleType={styleType}
         />
       );
-    }
-    if (
-      tag === "button" ||
-      props.type === "button" ||
-      props.type === "submit" ||
-      props.type === "reset" ||
-      tag === "submit" ||
-      tag === "reset"
-    ) {
-      return <Button {...props} key={key} styleType={styleType} />;
     }
     return (
       <Input
@@ -131,7 +132,7 @@ function renderElement(
       />
     );
   }
-  if (tag === "radio-group") {
+  if (tag === 'radio-group') {
     return (
       <RadioGroup
         {...props}

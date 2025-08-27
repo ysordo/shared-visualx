@@ -113,7 +113,9 @@ select:hover {
     cursor: pointer;
 }
 
-input:not([type="checkbox"], [type="radio"], [type="button"], [type="submit"], [type="reset"]).futuristic {
+input.futuristic,
+textarea.futuristic,
+select.futuristic {
     border: 2px solid var(--base-200);
 }
 
@@ -136,10 +138,7 @@ select.futuristic:focus {
     border-radius: 4px;
 }
 
-button.futuristic,
-input[type='button'].futuristic,
-input[type='reset'].futuristic,
-input[type='submit'].futuristic {
+button.futuristic {
     border-radius: 50%;
 }
 
