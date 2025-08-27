@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/globals.css';
+import type { InputTypes } from '../interface/form';
 
 /**
  * Checkbox Component
@@ -11,7 +12,7 @@ import '../../styles/globals.css';
  * @param onChange - Function to call when the checkbox state changes
  * @returns A styled checkbox input with a label
  */
-export const Checkbox: React.FC<CheckboxProps> = ({
+export const Checkbox: React.FC<InputTypes.CheckboxProps> = ({
   name,
   label,
   checked,

@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/globals.css';
+import type { ButtonProps } from '../interface/form';
 /**
  * Button Component
  * @param label - The text to display on the button

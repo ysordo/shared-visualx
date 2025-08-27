@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/globals.css';
+import type { InputTypes } from '../interface/form';
 /**
  * Checkbox Component
  * @param name - The name of the checkbox input
@@ -10,5 +11,5 @@ import '../../styles/globals.css';
  * @param onChange - Function to call when the checkbox state changes
  * @returns A styled checkbox input with a label
  */
-export declare const Checkbox: React.FC<CheckboxProps>;
+export declare const Checkbox: React.FC<InputTypes.CheckboxProps>;
 //# sourceMappingURL=Checkbox.d.ts.map

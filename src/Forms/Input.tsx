@@ -1,6 +1,7 @@
 'use client';
 import { InputContainer } from './InputContainer';
 import '../../styles/globals.css';
+import type { InputProps, InputTypes } from '../interface/form';
 
 /**
  * Input Component Props
@@ -14,11 +15,7 @@ import '../../styles/globals.css';
  * @param styleType - Optional style type for the input
  * @returns A styled input element based on the specified type
  */
-export const Input: React.FC<InputProps> = ({
-  type,
-  styleType,
-  ...props
-}) => {
+export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
   switch (type) {
     case 'text':
       return (
@@ -87,7 +84,13 @@ export const Input: React.FC<InputProps> = ({
   }
 };
 
-const InputText: React.FC<InputTextProps> = ({
+/**
+ * Individual Input Components
+ * Each component handles a specific input type and its associated props
+ * @param props - Props specific to the input type
+ * @returns A styled input element
+ */
+const InputText: React.FC<InputTypes.InputTextProps> = ({
   name,
   label,
   value,
@@ -98,9 +101,7 @@ const InputText: React.FC<InputTextProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
-      className={`${
-        styleType ?? ''
-      } ${className ?? ''}`}
+      className={`${styleType ?? ''} ${className ?? ''}`}
       type="text"
       value={value}
       placeholder={placeholder}
@@ -109,7 +110,12 @@ const InputText: React.FC<InputTextProps> = ({
   </InputContainer>
 );
 
-const InputDate: React.FC<InputDateProps> = ({
+/**
+ * Date Input Component
+ * @param props - Props specific to the date input
+ * @returns A styled date input element
+ */
+const InputDate: React.FC<InputTypes.InputDateProps> = ({
   name,
   label,
   value,
@@ -119,9 +125,7 @@ const InputDate: React.FC<InputDateProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
-      className={`${
-        styleType ?? ''
-      } ${className ?? ''}`}
+      className={`${styleType ?? ''} ${className ?? ''}`}
       type="date"
       value={value}
       onChange={(e) => onChange(e.target.value)}
@@ -129,7 +133,12 @@ const InputDate: React.FC<InputDateProps> = ({
   </InputContainer>
 );
 
-const InputEmail: React.FC<InputEmailProps> = ({
+/**
+ * Email Input Component
+ * @param props - Props specific to the email input
+ * @returns A styled email input element
+ */
+const InputEmail: React.FC<InputTypes.InputEmailProps> = ({
   name,
   label,
   value,
@@ -140,9 +149,7 @@ const InputEmail: React.FC<InputEmailProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
-      className={`${
-        styleType ?? ''
-      } ${className ?? ''}`}
+      className={`${styleType ?? ''} ${className ?? ''}`}
       type="email"
       value={value}
       placeholder={placeholder}
@@ -151,7 +158,12 @@ const InputEmail: React.FC<InputEmailProps> = ({
   </InputContainer>
 );
 
-const InputFile: React.FC<InputFileProps> = ({
+/**
+ * File Input Component
+ * @param props - Props specific to the file input
+ * @returns A styled file input element
+ */
+const InputFile: React.FC<InputTypes.InputFileProps> = ({
   name,
   label,
   styleType,
@@ -160,16 +172,19 @@ const InputFile: React.FC<InputFileProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
-      className={`${
-        styleType ?? ''
-      } ${className ?? ''}`}
+      className={`${styleType ?? ''} ${className ?? ''}`}
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
     />
   </InputContainer>
 );
 
-const InputNumber: React.FC<InputNumberProps> = ({
+/**
+ * Number Input Component
+ * @param props - Props specific to the number input
+ * @returns A styled number input element
+ */
+const InputNumber: React.FC<InputTypes.InputNumberProps> = ({
   name,
   label,
   value,
@@ -180,9 +195,7 @@ const InputNumber: React.FC<InputNumberProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
-      className={`${
-        styleType ?? ''
-      } ${className ?? ''}`}
+      className={`${styleType ?? ''} ${className ?? ''}`}
       type="number"
       value={value}
       placeholder={placeholder}
@@ -191,7 +204,12 @@ const InputNumber: React.FC<InputNumberProps> = ({
   </InputContainer>
 );
 
-const InputPassword: React.FC<InputPasswordProps> = ({
+/**
+ * Password Input Component
+ * @param props - Props specific to the password input
+ * @returns A styled password input element
+ */
+const InputPassword: React.FC<InputTypes.InputPasswordProps> = ({
   name,
   label,
   value,
@@ -202,9 +220,7 @@ const InputPassword: React.FC<InputPasswordProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
-      className={`${
-        styleType ?? ''
-      } ${className ?? ''}`}
+      className={`${styleType ?? ''} ${className ?? ''}`}
       type="password"
       value={value}
       placeholder={placeholder}
@@ -213,7 +229,12 @@ const InputPassword: React.FC<InputPasswordProps> = ({
   </InputContainer>
 );
 
-const InputPhone: React.FC<InputPhoneProps> = ({
+/**
+ * Phone Input Component
+ * @param props - Props specific to the phone input
+ * @returns A styled phone input element
+ */
+const InputPhone: React.FC<InputTypes.InputPhoneProps> = ({
   name,
   label,
   value,
@@ -224,9 +245,7 @@ const InputPhone: React.FC<InputPhoneProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
-      className={`${
-        styleType ?? ''
-      } ${className ?? ''}`}
+      className={`${styleType ?? ''} ${className ?? ''}`}
       type="tel"
       value={value}
       placeholder={placeholder}

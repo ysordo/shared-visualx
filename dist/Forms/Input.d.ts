@@ -1,4 +1,5 @@
 import '../../styles/globals.css';
+import type { InputProps } from '../interface/form';
 /**
  * Input Component Props
  * @param type - The type of input (text, date, email, file, number, password, phone)
