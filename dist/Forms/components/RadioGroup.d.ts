@@ -1,6 +1,6 @@
-import React from "react";
-import "../../styles/globals.css";
-import type { InputTypes } from "./formComponents";
+import React from 'react';
+import '../styles/globals.css';
+import type { InputTypes } from './formComponents';
 /**
  * RadioGroup Component
  * @param options - Array of radio button options

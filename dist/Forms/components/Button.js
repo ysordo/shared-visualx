@@ -1,5 +1,5 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import "../../styles/globals.css";
+import '../`styles/globals.css';
 /**
  * Button Component
  * @param label - The text to display on the button
@@ -8,5 +8,5 @@ import "../../styles/globals.css";
  * @param styleType - Optional style type for the button
  * @returns A styled button element
  */
-export const Button = ({ children, onClick, type = "button", styleType, className, }) => (_jsx("button", { type: type, onClick: onClick, className: `${styleType} ${className}`, children: children }));
+export const Button = ({ children, onClick, type = 'button', styleType, className, }) => (_jsx("button", { type: type, onClick: onClick, className: `${styleType} ${className}`, children: children }));
 //# sourceMappingURL=Button.js.map

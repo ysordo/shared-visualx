@@ -1,6 +1,6 @@
-import { jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx } from 'react/jsx-runtime';
 import { InputContainer } from './InputContainer';
-import '../../styles/globals.css';
+import '../styles/globals.css';
 /**
  * TextArea Component
  * @param name - The name of the textarea
@@ -11,5 +11,22 @@ import '../../styles/globals.css';
  * @param styleType - Optional style type for the textarea
  * @returns A styled textarea element
  */
-export const TextArea = ({ name, label, value, onChange, placeholder, styleType, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("textarea", { value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value), className: `${styleType}` }) }));
+export const TextArea = ({
+  name,
+  label,
+  value,
+  onChange,
+  placeholder,
+  styleType,
+}) =>
+  _jsx(InputContainer, {
+    name: name,
+    label: label,
+    children: _jsx('textarea', {
+      value: value,
+      placeholder: placeholder,
+      onChange: e => onChange(e.target.value),
+      className: `${styleType}`,
+    }),
+  });
 //# sourceMappingURL=TextArea.js.map

@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
-import { InputContainer } from "./InputContainer";
-import "../../styles/globals.css";
+import { InputContainer } from './InputContainer';
+import '../styles/globals.css';
 /**
  * TextArea Component
  * @param name - The name of the textarea

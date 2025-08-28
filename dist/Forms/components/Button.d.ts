@@ -1,6 +1,6 @@
-import React from "react";
-import "../../styles/globals.css";
-import type { ButtonProps } from "./formComponents";
+import React from 'react';
+import '../`styles/globals.css';
+import type { ButtonProps } from './formComponents';
 /**
  * Button Component
  * @param label - The text to display on the button

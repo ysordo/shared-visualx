@@ -1,6 +1,6 @@
-import { InputContainer } from "./InputContainer";
-import "../../styles/globals.css";
-import type { InputTypes } from "./formComponents";
+import { InputContainer } from './InputContainer';
+import '../styles/globals.css';
+import type { InputTypes } from './formComponents';
 
 /**
  * TextArea Component

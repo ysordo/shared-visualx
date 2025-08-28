@@ -1,6 +1,6 @@
-import { jsx as _jsx } from "react/jsx-runtime";
+import { jsx as _jsx } from 'react/jsx-runtime';
 import { InputContainer } from './InputContainer';
-import '../../styles/globals.css';
+import '../styles/globals.css';
 /**
  * Select Component
  * @param name - The name of the select input
@@ -11,5 +11,23 @@ import '../../styles/globals.css';
  * @param styleType - Optional style type for the select input
  * @returns A styled select dropdown element
  */
-export const Select = ({ name, label, options, value, onChange, styleType, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("select", { id: name, name: name, value: value, className: `${styleType}`, onChange: (e) => onChange(e.target.value), children: options.map((opt) => (_jsx("option", { className: `${styleType}`, value: opt.value, children: opt.text }, opt.value))) }) }));
+export const Select = ({ name, label, options, value, onChange, styleType }) =>
+  _jsx(InputContainer, {
+    name: name,
+    label: label,
+    children: _jsx('select', {
+      id: name,
+      name: name,
+      value: value,
+      className: `${styleType}`,
+      onChange: e => onChange(e.target.value),
+      children: options.map(opt =>
+        _jsx(
+          'option',
+          { className: `${styleType}`, value: opt.value, children: opt.text },
+          opt.value,
+        ),
+      ),
+    }),
+  });
 //# sourceMappingURL=Select.js.map

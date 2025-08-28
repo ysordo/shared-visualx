@@ -1,5 +1,5 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import '../../styles/globals.css';
+import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime';
+import '../styles/globals.css';
 /**
  * Checkbox Component
  * @param name - The name of the checkbox input
@@ -10,5 +10,25 @@ import '../../styles/globals.css';
  * @param onChange - Function to call when the checkbox state changes
  * @returns A styled checkbox input with a label
  */
-export const Checkbox = ({ name, label, checked, styleType, className, onChange, }) => (_jsxs("label", { htmlFor: name, className: `${styleType} ${className}`, children: [_jsx("input", { id: name, type: "checkbox", checked: checked, onChange: () => onChange(!checked) }), label] }));
+export const Checkbox = ({
+  name,
+  label,
+  checked,
+  styleType,
+  className,
+  onChange,
+}) =>
+  _jsxs('label', {
+    htmlFor: name,
+    className: `${styleType} ${className}`,
+    children: [
+      _jsx('input', {
+        id: name,
+        type: 'checkbox',
+        checked: checked,
+        onChange: () => onChange(!checked),
+      }),
+      label,
+    ],
+  });
 //# sourceMappingURL=Checkbox.js.map
