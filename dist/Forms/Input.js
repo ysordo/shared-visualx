@@ -1,7 +1,7 @@
 'use client';
 import { jsx as _jsx } from 'react/jsx-runtime';
 import { InputContainer } from './InputContainer';
-import '../styles/globals.css';
+import '.../../../styles/forms.style.css';
 /**
  * Input Component Props
  * @param type - The type of input (text, date, email, file, number, password, phone)

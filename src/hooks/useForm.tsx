@@ -37,14 +37,17 @@ export function useForm(
   schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>,
   styleType?: TStyle
 ): [
-  React.FC<FormPropsDom>,
+  React.FC<Omit<FormPropsDom,'update'>>,
   Record<string, unknown>,
   Record<string, string | null>
 ] {
   const [errors, setErrors] = useState<Record<string, string | null>>({});
   const [values, setValues] = useState<TData>(initialization);
 
-  function Form({ onSubmit, ...props }: Omit<FormPropsDom, 'update'>) {
+  function Form({ onSubmit, ...props }: {
+    onSubmit: (_val: Record<string, unknown>, _err: Record<string, string | null>) => void,
+    className?: string;
+  }) {
     return (
       <FormRendered
         initialization={initialization}

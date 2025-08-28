@@ -29,7 +29,7 @@ import type { TStyle } from '../core/schemaManager.t';
 export declare function useForm(initialization: {
     [key: string]: unknown;
 }, schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>, styleType?: TStyle): [
-    React.FC<FormPropsDom>,
+    React.FC<Omit<FormPropsDom, 'update'>>,
     Record<string, unknown>,
     Record<string, string | null>
 ];

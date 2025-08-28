@@ -1,5 +1,5 @@
 import { jsx as _jsx } from 'react/jsx-runtime';
-import '../styles/globals.css';
+import '.../../../styles/forms.style.css';
 /**
  * Button Component
  * @param label - The text to display on the button

@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '.../../../styles/forms.style.css';
 import type { InputTypes } from './formComponents';
 /**
  * TextArea Component

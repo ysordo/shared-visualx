@@ -1,4 +1,4 @@
-import '../styles/globals.css';
+import '.../../../styles/forms.style.css';
 import type { InputProps } from '../interface/form';
 /**
  * Input Component Props
