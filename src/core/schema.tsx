@@ -1,11 +1,10 @@
 import type { HTMLElementType, HTMLInputTypeAttribute, JSX } from 'react';
 import React, { useState } from 'react';
-import { Input } from '../Forms/Input';
-import { TextArea } from '../Forms/TextArea';
-import { Select } from '../Forms/Select';
-import { Checkbox } from '../Forms/Checkbox';
-import { RadioGroup } from '../Forms/RadioGroup';
-import { Button } from '../Forms/Button';
+import { Input } from '../Forms/components/Input';
+import { TextArea } from '../Forms/components/TextArea';
+import { Select } from '../Forms/components/Select';
+import { RadioGroup } from '../Forms/components/RadioGroup';
+import { Button } from '../Forms/components/Button';
 
 const typeofInput = [
   'checkbox',
@@ -88,10 +87,10 @@ function renderElement(
   ) {
     if (tag === 'checkbox' || props.type === 'checkbox') {
       return (
-        <Checkbox
+        <Input
           {...props}
           onChange={(_val) => onChange(props.name, _val)}
-          checked={value[props.name]}
+          value={value[props.name]}
           key={key}
           styleType={styleType}
         />

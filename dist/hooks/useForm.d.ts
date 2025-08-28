@@ -1,4 +1,6 @@
 import { type HTMLElementType, type HTMLInputTypeAttribute } from 'react';
+import type { FormPropsDom } from '../Forms/core/form';
+import type { TStyle } from '../core/schemaManager.t';
 /**
  * useForm Hook
  * @param value - Initial form values
@@ -24,12 +26,10 @@ import { type HTMLElementType, type HTMLInputTypeAttribute } from 'react';
  * @example value
  * { username: '', password: '', rememberMe: false }
  */
-export declare function useForm(value: {
+export declare function useForm(initialization: {
     [key: string]: unknown;
-}, schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>, styleType?: 'futuristic' | 'simple'): [
-    React.FC<{
-        onSubmit: (_val: Record<string, unknown>, _err: Record<string, string | null>) => void;
-    }>,
+}, schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>, styleType?: TStyle): [
+    React.FC<FormPropsDom>,
     Record<string, unknown>,
     Record<string, string | null>
 ];

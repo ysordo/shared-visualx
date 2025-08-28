@@ -1,7 +1,7 @@
-'use client';
-import { InputContainer } from './InputContainer';
-import '../../styles/globals.css';
-import type { InputProps, InputTypes } from '../interface/form';
+"use client";
+import { InputContainer } from "./InputContainer";
+import "../../styles/globals.css";
+import type { InputProps, InputTypes } from "./formComponents";
 
 /**
  * Input Component Props
@@ -17,7 +17,7 @@ import type { InputProps, InputTypes } from '../interface/form';
  */
 export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
   switch (type) {
-    case 'text':
+    case "text":
       return (
         <InputText
           {...props}
@@ -26,7 +26,7 @@ export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
           onChange={props.onChange as (value: string) => void}
         />
       );
-    case 'date':
+    case "date":
       return (
         <InputDate
           {...props}
@@ -35,7 +35,7 @@ export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
           onChange={props.onChange as (value: string) => void}
         />
       );
-    case 'email':
+    case "email":
       return (
         <InputEmail
           {...props}
@@ -44,7 +44,7 @@ export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
           onChange={props.onChange as (value: string) => void}
         />
       );
-    case 'file':
+    case "file":
       return (
         <InputFile
           {...props}
@@ -52,7 +52,7 @@ export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
           onChange={props.onChange as (file: File | null) => void}
         />
       );
-    case 'number':
+    case "number":
       return (
         <InputNumber
           {...props}
@@ -61,7 +61,7 @@ export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
           onChange={props.onChange as (value: number) => void}
         />
       );
-    case 'password':
+    case "password":
       return (
         <InputPassword
           {...props}
@@ -70,13 +70,22 @@ export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
           onChange={props.onChange as (value: string) => void}
         />
       );
-    case 'phone':
+    case "phone":
       return (
         <InputPhone
           {...props}
           styleType={styleType}
           value={props.value as string}
           onChange={props.onChange as (value: string) => void}
+        />
+      );
+    case "checkbox":
+      return (
+        <Checkbox
+          {...props}
+          styleType={styleType}
+          checked={props.value as boolean}
+          onChange={props.onChange as (value: boolean) => void}
         />
       );
     default:
@@ -102,7 +111,7 @@ const InputText: React.FC<InputTypes.InputTextProps> = ({
   <InputContainer name={name} label={label}>
     <input
       id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
+      className={`${styleType ?? ""} ${className ?? ""}`}
       type="text"
       value={value}
       placeholder={placeholder}
@@ -127,7 +136,7 @@ const InputDate: React.FC<InputTypes.InputDateProps> = ({
   <InputContainer name={name} label={label}>
     <input
       id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
+      className={`${styleType ?? ""} ${className ?? ""}`}
       type="date"
       value={value}
       onChange={(e) => onChange(e.target.value)}
@@ -152,7 +161,7 @@ const InputEmail: React.FC<InputTypes.InputEmailProps> = ({
   <InputContainer name={name} label={label}>
     <input
       id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
+      className={`${styleType ?? ""} ${className ?? ""}`}
       type="email"
       value={value}
       placeholder={placeholder}
@@ -176,7 +185,7 @@ const InputFile: React.FC<InputTypes.InputFileProps> = ({
   <InputContainer name={name} label={label}>
     <input
       id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
+      className={`${styleType ?? ""} ${className ?? ""}`}
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
     />
@@ -200,7 +209,7 @@ const InputNumber: React.FC<InputTypes.InputNumberProps> = ({
   <InputContainer name={name} label={label}>
     <input
       id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
+      className={`${styleType ?? ""} ${className ?? ""}`}
       type="number"
       value={value}
       placeholder={placeholder}
@@ -226,7 +235,7 @@ const InputPassword: React.FC<InputTypes.InputPasswordProps> = ({
   <InputContainer name={name} label={label}>
     <input
       id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
+      className={`${styleType ?? ""} ${className ?? ""}`}
       type="password"
       value={value}
       placeholder={placeholder}
@@ -252,11 +261,40 @@ const InputPhone: React.FC<InputTypes.InputPhoneProps> = ({
   <InputContainer name={name} label={label}>
     <input
       id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
+      className={`${styleType ?? ""} ${className ?? ""}`}
       type="tel"
       value={value}
       placeholder={placeholder}
       onChange={(e) => onChange(e.target.value)}
     />
   </InputContainer>
+);
+
+/**
+ * Checkbox Component
+ * @param name - The name of the checkbox input
+ * @param label - The label to display next to the checkbox
+ * @param checked - Boolean indicating if the checkbox is checked
+ * @param styleType - Optional style type for the checkbox
+ * @param className - Optional additional class names for the checkbox
+ * @param onChange - Function to call when the checkbox state changes
+ * @returns A styled checkbox input with a label
+ */
+const Checkbox: React.FC<InputTypes.CheckboxProps> = ({
+  name,
+  label,
+  checked,
+  styleType,
+  className,
+  onChange,
+}) => (
+  <label htmlFor={name} className={`${styleType} ${className}`}>
+    <input
+      id={name}
+      type="checkbox"
+      checked={checked}
+      onChange={() => onChange(!checked)}
+    />
+    {label}
+  </label>
 );

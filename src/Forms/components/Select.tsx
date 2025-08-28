@@ -1,7 +1,7 @@
-import React from 'react';
-import { InputContainer } from './InputContainer';
-import '../../styles/globals.css';
-import type { InputTypes } from '../interface/form';
+import React from "react";
+import { InputContainer } from "./InputContainer";
+import "../../styles/globals.css";
+import type { InputTypes } from "./formComponents";
 
 /**
  * Select Component

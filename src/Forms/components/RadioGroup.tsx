@@ -1,6 +1,6 @@
-import React from 'react';
-import '../../styles/globals.css';
-import type { InputTypes } from '../interface/form';
+import React from "react";
+import "../../styles/globals.css";
+import type { InputTypes } from "./formComponents";
 
 /**
  * RadioGroup Component
@@ -15,7 +15,7 @@ export const RadioGroup: React.FC<InputTypes.RadioGroupProps> = ({
   options,
   value,
   styleType,
-  className = '',
+  className = "",
   onChange,
 }) => (
   <div className="flex flex-col gap-2">

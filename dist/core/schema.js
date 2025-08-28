@@ -1,12 +1,11 @@
 import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
 import { createElement as _createElement } from "react";
 import React, { useState } from 'react';
-import { Input } from '../Forms/Input';
-import { TextArea } from '../Forms/TextArea';
-import { Select } from '../Forms/Select';
-import { Checkbox } from '../Forms/Checkbox';
-import { RadioGroup } from '../Forms/RadioGroup';
-import { Button } from '../Forms/Button';
+import { Input } from '../Forms/components/Input';
+import { TextArea } from '../Forms/components/TextArea';
+import { Select } from '../Forms/components/Select';
+import { RadioGroup } from '../Forms/components/RadioGroup';
+import { Button } from '../Forms/components/Button';
 const typeofInput = [
     'checkbox',
     'color',
@@ -51,7 +50,7 @@ function renderElement(value, element, onChange = () => { }, styleType, key) {
         typeofInput.includes(tag) ||
         typeofInput.includes(props.type)) {
         if (tag === 'checkbox' || props.type === 'checkbox') {
-            return (_createElement(Checkbox, { ...props, onChange: (_val) => onChange(props.name, _val), checked: value[props.name], key: key, styleType: styleType }));
+            return (_createElement(Input, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
         }
         if (tag === 'radio-group' || props.type === 'radio-group') {
             return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));

@@ -1,6 +1,6 @@
-import React from 'react';
-import '../../styles/globals.css';
-import type { ButtonProps } from '../interface/form';
+import React from "react";
+import "../../styles/globals.css";
+import type { ButtonProps } from "./formComponents";
 
 /**
  * Button Component
@@ -13,7 +13,7 @@ import type { ButtonProps } from '../interface/form';
 export const Button: React.FC<ButtonProps> = ({
   children,
   onClick,
-  type = 'button',
+  type = "button",
   styleType,
   className,
 }) => (

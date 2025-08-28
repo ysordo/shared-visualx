@@ -3,7 +3,9 @@ import {
   type HTMLInputTypeAttribute,
   useState,
 } from 'react';
-import { useSchema } from '../core/schema';
+import type { FormPropsDom } from '../Forms/core/form';
+import { FormRendered } from '../Forms/core/FormManager';
+import type { TData, TStyle } from '../core/schemaManager.t';
 
 /**
  * useForm Hook
@@ -31,32 +33,32 @@ import { useSchema } from '../core/schema';
  * { username: '', password: '', rememberMe: false }
  */
 export function useForm(
-  value: { [key: string]: unknown },
+  initialization: { [key: string]: unknown },
   schema: Record<HTMLElementType | HTMLInputTypeAttribute, unknown>,
-  styleType?: 'futuristic' | 'simple'
+  styleType?: TStyle
 ): [
-  React.FC<{
-    onSubmit: (
-      _val: Record<string, unknown>,
-      _err: Record<string, string | null>
-    ) => void;
-  }>,
+  React.FC<FormPropsDom>,
   Record<string, unknown>,
   Record<string, string | null>
 ] {
   const [errors, setErrors] = useState<Record<string, string | null>>({});
-  const [values, renderedForm] = useSchema(value, schema, styleType);
+  const [values, setValues] = useState<TData>(initialization);
 
-  function Form({
-    onSubmit,
-  }: {
-    onSubmit: (
-      _val: Record<string, unknown>,
-      _err: Record<string, string | null>
-    ) => void;
-  }) {
+  function Form({ onSubmit, ...props }: Omit<FormPropsDom, 'update'>) {
     return (
-      <form onSubmit={(e) => onSubmit(values, errors)}>{renderedForm}</form>
+      <FormRendered
+        initialization={initialization}
+        schema={schema}
+        update={(value, error) => {
+          setValues(value);
+          setErrors(error);
+        }}
+        onSubmit={(val, err) => {
+          onSubmit(val, err);
+        }}
+        style={styleType}
+        {...props}
+      />
     );
   }
 

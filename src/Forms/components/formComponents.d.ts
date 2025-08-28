@@ -28,11 +28,11 @@ interface ButtonProps {
  * @property {string} [className] - Additional CSS classes
  */
 interface InputProps {
-  type: 'text' | 'date' | 'email' | 'file' | 'number' | 'password' | 'phone';
+  type: 'text' | 'date' | 'email' | 'file' | 'number' | 'password' | 'phone' | 'checkbox';
   name: string;
   label: string;
-  value?: string | number;
-  onChange?: (value: string | number | File | null) => void;
+  value?: string | number | boolean;
+  onChange?: (value: string | number | File | boolean | null) => void;
   placeholder?: string;
   className?: string;
   styleType?: 'futuristic' | 'simple';

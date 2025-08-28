@@ -1,0 +1,27 @@
+import { jsx as _jsx } from "react/jsx-runtime";
+import { Form } from '../Form';
+import { Rendered } from '../../core/SchemaManager';
+import React from 'react';
+export class FormRendered extends React.Component {
+    constructor(props) {
+        const { initialization, schema, style } = props;
+        super(props);
+        this._render = null;
+        this.state = {};
+        this.setState(initialization);
+        this._render = new Rendered(schema);
+        this.style = style;
+    }
+    onChange(e) {
+        this.setState((prev) => ({ ...prev, [e.key]: e.value }));
+    }
+    doom({ onSubmit, update, ...props }) {
+        return (this._render && (_jsx(Form, { onSubmit: onSubmit, update: () => update(this.state, {}), ...props, children: _jsx(this._render.Doom, { style: this.style, data: this.state, onChange: ({ key, value }) => {
+                    this.onChange({ key, value });
+                } }) })));
+    }
+    render() {
+        return this.doom({ ...this.props });
+    }
+}
+//# sourceMappingURL=FormManager.js.map

@@ -1,6 +1,6 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 import { useState, } from 'react';
-import { useSchema } from '../core/schema';
+import { FormRendered } from '../Forms/core/FormManager';
 /**
  * useForm Hook
  * @param value - Initial form values
@@ -26,11 +26,16 @@ import { useSchema } from '../core/schema';
  * @example value
  * { username: '', password: '', rememberMe: false }
  */
-export function useForm(value, schema, styleType) {
+export function useForm(initialization, schema, styleType) {
     const [errors, setErrors] = useState({});
-    const [values, renderedForm] = useSchema(value, schema, styleType);
-    function Form({ onSubmit, }) {
-        return (_jsx("form", { onSubmit: (e) => onSubmit(values, errors), children: renderedForm }));
+    const [values, setValues] = useState(initialization);
+    function Form({ onSubmit, ...props }) {
+        return (_jsx(FormRendered, { initialization: initialization, schema: schema, update: (value, error) => {
+                setValues(value);
+                setErrors(error);
+            }, onSubmit: (val, err) => {
+                onSubmit(val, err);
+            }, style: styleType, ...props }));
     }
     return [Form, values, errors];
 }
