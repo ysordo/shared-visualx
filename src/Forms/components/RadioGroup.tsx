@@ -1,5 +1,5 @@
 import React from 'react';
-import '.../../../styles/forms.style.css';
+import '../../../styles/forms.style.css';
 import type { InputTypes } from './formComponents';
 
 /**

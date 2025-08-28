@@ -1,6 +1,6 @@
 'use client';
 import { InputContainer } from './InputContainer';
-import '.../../../styles/forms.style.css';
+import '../../../styles/forms.style.css';
 import type { InputProps, InputTypes } from './formComponents';
 
 /**

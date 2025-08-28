@@ -1,6 +1,6 @@
-import React from 'react';
-import '.../../../styles/forms.style.css';
-import type { InputTypes } from './formComponents';
+import React from "react";
+import "../../../styles/forms.style.css";
+import type { InputTypes } from "./formComponents";
 /**
  * Select Component
  * @param name - The name of the select input
