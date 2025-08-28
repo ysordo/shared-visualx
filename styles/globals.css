@@ -186,6 +186,10 @@ select.futuristic:focus {
     background-color: var(--base-200);
 }
 
+.futuristic:has(>input[type="checkbox"], >input[type="radio"]) {
+    padding: 15px 30px;
+}
+
 @keyframes neuro {
     0% {
         left: -100%;
