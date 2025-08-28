@@ -10,5 +10,5 @@ import '../../styles/globals.css';
  * @param onChange - Function to call when the checkbox state changes
  * @returns A styled checkbox input with a label
  */
-export const Checkbox = ({ name, label, checked, styleType, className, onChange, }) => (_jsx("div", { children: _jsxs("label", { htmlFor: name, className: `${styleType} ${className}`, children: [_jsx("input", { type: "checkbox", checked: checked, onChange: () => onChange(!checked) }), label] }) }));
+export const Checkbox = ({ name, label, checked, styleType, className, onChange, }) => (_jsxs("label", { htmlFor: name, className: `${styleType} ${className}`, children: [_jsx("input", { id: name, type: "checkbox", checked: checked, onChange: () => onChange(!checked) }), label] }));
 //# sourceMappingURL=Checkbox.js.map

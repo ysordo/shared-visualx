@@ -20,14 +20,13 @@ export const Checkbox: React.FC<InputTypes.CheckboxProps> = ({
   className,
   onChange,
 }) => (
-  <div>
-    <label htmlFor={name} className={`${styleType} ${className}`}>
-      <input
-        type="checkbox"
-        checked={checked}
-        onChange={() => onChange(!checked)}
-      />
-      {label}
-    </label>
-  </div>
+  <label htmlFor={name} className={`${styleType} ${className}`}>
+    <input
+      id={name}
+      type="checkbox"
+      checked={checked}
+      onChange={() => onChange(!checked)}
+    />
+    {label}
+  </label>
 );

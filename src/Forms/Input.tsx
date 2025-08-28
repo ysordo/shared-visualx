@@ -101,6 +101,7 @@ const InputText: React.FC<InputTypes.InputTextProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
+      id={name}
       className={`${styleType ?? ''} ${className ?? ''}`}
       type="text"
       value={value}
@@ -125,6 +126,7 @@ const InputDate: React.FC<InputTypes.InputDateProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
+      id={name}
       className={`${styleType ?? ''} ${className ?? ''}`}
       type="date"
       value={value}
@@ -149,6 +151,7 @@ const InputEmail: React.FC<InputTypes.InputEmailProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
+      id={name}
       className={`${styleType ?? ''} ${className ?? ''}`}
       type="email"
       value={value}
@@ -172,6 +175,7 @@ const InputFile: React.FC<InputTypes.InputFileProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
+      id={name}
       className={`${styleType ?? ''} ${className ?? ''}`}
       type="file"
       onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
@@ -195,6 +199,7 @@ const InputNumber: React.FC<InputTypes.InputNumberProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
+      id={name}
       className={`${styleType ?? ''} ${className ?? ''}`}
       type="number"
       value={value}
@@ -220,6 +225,7 @@ const InputPassword: React.FC<InputTypes.InputPasswordProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
+      id={name}
       className={`${styleType ?? ''} ${className ?? ''}`}
       type="password"
       value={value}
@@ -245,6 +251,7 @@ const InputPhone: React.FC<InputTypes.InputPhoneProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <input
+      id={name}
       className={`${styleType ?? ''} ${className ?? ''}`}
       type="tel"
       value={value}

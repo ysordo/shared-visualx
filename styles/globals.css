@@ -13,11 +13,13 @@
 input,
 textarea,
 select,
-button {
+button,
+select>option {
     appearance: none;
     -webkit-appearance: none;
     all: unset;
     box-sizing: border-box;
+    padding: 15px 30px;
 }
 
 input[type="checkbox"],
@@ -28,6 +30,7 @@ input[type="radio"] {
     border: 2px solid green;
     background-color: transparent;
     transition: all 0.2s;
+    padding: 0;
 }
 
 input[type="checkbox"] {
@@ -110,14 +113,19 @@ input[type="checkbox"]:checked::before {
 input:hover,
 button:hover,
 textarea:hover,
-select:hover {
+select:hover,
+select>option:hover {
     cursor: pointer;
+}
+
+button {
+    text-align: center;
+    border: 2px solid green;
 }
 
 .futuristic {
     position: relative;
-    padding: 15px 30px;
-    background: #0A0A0A;
+    background: transparent;
     border: none;
     color: var(--base-200);
     font-family: 'Space Grotesk', sans-serif;
@@ -162,10 +170,6 @@ input.futuristic:focus,
 textarea.futuristic:focus,
 select.futuristic:focus {
     outline: 2px solid var(--violet);
-}
-
-button.futuristic {
-    border-radius: 50%;
 }
 
 .futuristic input[type="checkbox"],

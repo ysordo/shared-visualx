@@ -23,11 +23,13 @@ export const Select: React.FC<InputTypes.SelectProps> = ({
 }) => (
   <InputContainer name={name} label={label}>
     <select
+      id={name}
       name={name}
       value={value}
+      className={`${styleType}`}
       onChange={(e) => onChange(e.target.value)}>
       {options.map((opt) => (
-        <option key={opt.value} value={opt.value}>
+        <option className={`${styleType}`} key={opt.value} value={opt.value}>
           {opt.text}
         </option>
       ))}

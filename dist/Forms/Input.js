@@ -40,41 +40,41 @@ export const Input = ({ type, styleType, ...props }) => {
  * @param props - Props specific to the input type
  * @returns A styled input element
  */
-const InputText = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { className: `${styleType ?? ''} ${className ?? ''}`, type: "text", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputText = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { id: name, className: `${styleType ?? ''} ${className ?? ''}`, type: "text", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
 /**
  * Date Input Component
  * @param props - Props specific to the date input
  * @returns A styled date input element
  */
-const InputDate = ({ name, label, value, styleType, onChange, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { className: `${styleType ?? ''} ${className ?? ''}`, type: "date", value: value, onChange: (e) => onChange(e.target.value) }) }));
+const InputDate = ({ name, label, value, styleType, onChange, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { id: name, className: `${styleType ?? ''} ${className ?? ''}`, type: "date", value: value, onChange: (e) => onChange(e.target.value) }) }));
 /**
  * Email Input Component
  * @param props - Props specific to the email input
  * @returns A styled email input element
  */
-const InputEmail = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { className: `${styleType ?? ''} ${className ?? ''}`, type: "email", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputEmail = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { id: name, className: `${styleType ?? ''} ${className ?? ''}`, type: "email", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
 /**
  * File Input Component
  * @param props - Props specific to the file input
  * @returns A styled file input element
  */
-const InputFile = ({ name, label, styleType, onChange, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { className: `${styleType ?? ''} ${className ?? ''}`, type: "file", onChange: (e) => onChange(e.target.files ? e.target.files[0] : null) }) }));
+const InputFile = ({ name, label, styleType, onChange, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { id: name, className: `${styleType ?? ''} ${className ?? ''}`, type: "file", onChange: (e) => onChange(e.target.files ? e.target.files[0] : null) }) }));
 /**
  * Number Input Component
  * @param props - Props specific to the number input
  * @returns A styled number input element
  */
-const InputNumber = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { className: `${styleType ?? ''} ${className ?? ''}`, type: "number", value: value, placeholder: placeholder, onChange: (e) => onChange(Number(e.target.value)) }) }));
+const InputNumber = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { id: name, className: `${styleType ?? ''} ${className ?? ''}`, type: "number", value: value, placeholder: placeholder, onChange: (e) => onChange(Number(e.target.value)) }) }));
 /**
  * Password Input Component
  * @param props - Props specific to the password input
  * @returns A styled password input element
  */
-const InputPassword = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { className: `${styleType ?? ''} ${className ?? ''}`, type: "password", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputPassword = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { id: name, className: `${styleType ?? ''} ${className ?? ''}`, type: "password", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
 /**
  * Phone Input Component
  * @param props - Props specific to the phone input
  * @returns A styled phone input element
  */
-const InputPhone = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { className: `${styleType ?? ''} ${className ?? ''}`, type: "tel", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
+const InputPhone = ({ name, label, value, styleType, onChange, placeholder, className, }) => (_jsx(InputContainer, { name: name, label: label, children: _jsx("input", { id: name, className: `${styleType ?? ''} ${className ?? ''}`, type: "tel", value: value, placeholder: placeholder, onChange: (e) => onChange(e.target.value) }) }));
 //# sourceMappingURL=Input.js.map
