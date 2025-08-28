@@ -30,11 +30,6 @@ input[type="radio"] {
     transition: all 0.2s;
 }
 
-.futuristic input[type="checkbox"],
-.futuristic input[type="radio"] {
-    border-color: var(--base-200);
-}
-
 input[type="checkbox"] {
     border-radius: 4px;
 }
@@ -50,6 +45,13 @@ input[type="radio"]::before {
     content: '';
     position: absolute;
     transition: all 0.2s;
+}
+
+*:has(>input[type="checkbox"], >input[type="radio"]) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: auto;
 }
 
 input[type="radio"]::after {
@@ -78,14 +80,9 @@ input[type="checkbox"]::after {
     z-index: 2;
 }
 
-*>input[type="checkbox"]::after {
+input[type="checkbox"]::after {
     color: green;
     font-size: 2rem;
-}
-
-.futuristic>input[type="checkbox"]::after {
-    color: var(--base-200);
-    font-size: 2.5rem;
 }
 
 input[type="checkbox"]::before {
@@ -99,12 +96,8 @@ input[type="checkbox"]::before {
     border-radius: 4px;
 }
 
-*>input[type="radio"]::after {
+input[type="radio"]::after {
     background-color: green;
-}
-
-.futuristic>input[type="radio"]::after {
-    background-color: var(--base-200);
 }
 
 
@@ -121,18 +114,6 @@ select:hover {
     cursor: pointer;
 }
 
-input.futuristic,
-textarea.futuristic,
-select.futuristic {
-    border: 2px solid var(--base-200);
-}
-
-input.futuristic:focus,
-textarea.futuristic:focus,
-select.futuristic:focus {
-    outline: 2px solid var(--violet);
-}
-
 .futuristic {
     position: relative;
     padding: 15px 30px;
@@ -144,17 +125,6 @@ select.futuristic:focus {
     overflow: hidden;
     transition: 0.3s;
     border-radius: 4px;
-}
-
-button.futuristic {
-    border-radius: 50%;
-}
-
-*:has(>input[type="checkbox"], >input[type="radio"]) {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    cursor: auto;
 }
 
 .futuristic::before {
@@ -180,6 +150,36 @@ button.futuristic {
     --alpha: 0.3;
     box-shadow: 0 0 20px rgba(var(--base-200-rgb), var(--alpha));
     animation: neuro-shadow 1s infinite ease-in-out;
+}
+
+input.futuristic,
+textarea.futuristic,
+select.futuristic {
+    border: 2px solid var(--base-200);
+}
+
+input.futuristic:focus,
+textarea.futuristic:focus,
+select.futuristic:focus {
+    outline: 2px solid var(--violet);
+}
+
+button.futuristic {
+    border-radius: 50%;
+}
+
+.futuristic input[type="checkbox"],
+.futuristic input[type="radio"] {
+    border-color: var(--base-200);
+}
+
+.futuristic>input[type="checkbox"]::after {
+    color: var(--base-200);
+    font-size: 2.5rem;
+}
+
+.futuristic>input[type="radio"]::after {
+    background-color: var(--base-200);
 }
 
 @keyframes neuro {
