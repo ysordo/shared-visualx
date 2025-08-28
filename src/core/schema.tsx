@@ -8,7 +8,6 @@ import { RadioGroup } from '../Forms/RadioGroup';
 import { Button } from '../Forms/Button';
 
 const typeofInput = [
-  'button',
   'checkbox',
   'color',
   'date',
@@ -22,9 +21,7 @@ const typeofInput = [
   'password',
   'radio',
   'range',
-  'reset',
   'search',
-  'submit',
   'tel',
   'text',
   'time',
@@ -53,7 +50,14 @@ function renderElement(
     tag === 'submit' ||
     tag === 'reset'
   ) {
-    return <Button {...props} key={key} styleType={styleType} />;
+    return (
+      <Button
+        {...props}
+        type={props.type ?? tag}
+        key={key}
+        styleType={styleType}
+      />
+    );
   }
 
   if (tag === 'textarea' || props.type === 'textarea') {
@@ -87,7 +91,7 @@ function renderElement(
         <Checkbox
           {...props}
           onChange={(_val) => onChange(props.name, _val)}
-          value={value[props.name]}
+          checked={value[props.name]}
           key={key}
           styleType={styleType}
         />
@@ -129,7 +133,7 @@ function renderElement(
       />
     );
   }
-  
+
   if (props.children) {
     if (typeof props.children === 'string') {
       return React.createElement(tag, { ...props, key }, props.children);

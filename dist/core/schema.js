@@ -8,7 +8,6 @@ import { Checkbox } from '../Forms/Checkbox';
 import { RadioGroup } from '../Forms/RadioGroup';
 import { Button } from '../Forms/Button';
 const typeofInput = [
-    'button',
     'checkbox',
     'color',
     'date',
@@ -22,9 +21,7 @@ const typeofInput = [
     'password',
     'radio',
     'range',
-    'reset',
     'search',
-    'submit',
     'tel',
     'text',
     'time',
@@ -42,7 +39,7 @@ function renderElement(value, element, onChange = () => { }, styleType, key) {
         props.type === 'reset' ||
         tag === 'submit' ||
         tag === 'reset') {
-        return _createElement(Button, { ...props, key: key, styleType: styleType });
+        return (_createElement(Button, { ...props, type: props.type ?? tag, key: key, styleType: styleType }));
     }
     if (tag === 'textarea' || props.type === 'textarea') {
         return (_createElement(TextArea, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
@@ -54,7 +51,7 @@ function renderElement(value, element, onChange = () => { }, styleType, key) {
         typeofInput.includes(tag) ||
         typeofInput.includes(props.type)) {
         if (tag === 'checkbox' || props.type === 'checkbox') {
-            return (_createElement(Checkbox, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
+            return (_createElement(Checkbox, { ...props, onChange: (_val) => onChange(props.name, _val), checked: value[props.name], key: key, styleType: styleType }));
         }
         if (tag === 'radio-group' || props.type === 'radio-group') {
             return (_createElement(RadioGroup, { ...props, onChange: (_val) => onChange(props.name, _val), value: value[props.name], key: key, styleType: styleType }));
