@@ -22,7 +22,7 @@ export class FormRendered extends React.Component {
         if (!this._render) {
             return null;
         }
-        return (_jsx(Form, { ...this.props, onSubmit: (e) => {
+        return (_jsx(Form, { className: this.props.className, onSubmit: (e) => {
                 e.preventDefault();
                 this.props.onSubmit?.(this.state, {});
             }, children: _jsx(this._render.Doom, { style: this.style, data: this.state, onChange: this.onChange }) }));

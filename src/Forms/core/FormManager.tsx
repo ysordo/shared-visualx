@@ -44,7 +44,7 @@ export class FormRendered
 
     return (
       <Form
-        {...this.props}
+        className={this.props.className}
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
           this.props.onSubmit?.(this.state, {});
