@@ -27,7 +27,7 @@ export class FormRendered
   ) {
     const { initialization, schema, style } = props;
     super(props);
-    this.setState(initialization);
+    this.state = initialization;
     this._render = new Rendered(schema);
     this.style = style;
   }

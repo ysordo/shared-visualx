@@ -8,7 +8,7 @@ export class FormRendered extends React.Component {
         super(props);
         this._render = null;
         this.state = {};
-        this.setState(initialization);
+        this.state = initialization;
         this._render = new Rendered(schema);
         this.style = style;
     }
