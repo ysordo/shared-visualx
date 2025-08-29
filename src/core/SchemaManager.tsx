@@ -8,9 +8,7 @@ import {
 } from './schemaManager.t';
 
 export class SchemaManager {
-  constructor(protected schema: TSchema) {
-    this.schema = schema;
-  }
+  constructor(protected schema: TSchema) {}
 
   protected Generate({
     element,

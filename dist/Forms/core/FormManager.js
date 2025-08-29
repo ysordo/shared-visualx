@@ -4,12 +4,12 @@ import { Rendered } from '../../core/SchemaManager';
 import React from 'react';
 export class FormRendered extends React.Component {
     constructor(props) {
-        const { initialization, schema, style } = props;
         super(props);
         this._render = null;
         this.state = {};
-        this.state = initialization;
-        this._render = new Rendered(schema);
+        const { initialization, schema, style } = props;
+        this.state = initialization || {};
+        this._render = schema ? new Rendered(schema) : null;
         this.style = style;
     }
     onChange(e) {

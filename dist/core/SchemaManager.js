@@ -6,7 +6,6 @@ import { typeofInput, } from './schemaManager.t';
 export class SchemaManager {
     constructor(schema) {
         this.schema = schema;
-        this.schema = schema;
     }
     Generate({ element, data, onChange, style, key, }) {
         if (!element) {

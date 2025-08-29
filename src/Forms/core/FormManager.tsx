@@ -2,7 +2,7 @@ import { Form } from '../Form';
 import { Rendered } from '../../core/SchemaManager';
 import type { TData, TSchema, TStyle } from '../../core/schemaManager.t';
 import type { FormPropsDom, IFormRendered } from './form';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 export class FormRendered
   extends React.Component<
@@ -25,10 +25,10 @@ export class FormRendered
       style?: TStyle;
     }
   ) {
-    const { initialization, schema, style } = props;
     super(props);
-    this.state = initialization;
-    this._render = new Rendered(schema);
+    const { initialization, schema, style } = props;
+    this.state = initialization || {};
+    this._render = schema ? new Rendered(schema) : null;
     this.style = style;
   }
 
