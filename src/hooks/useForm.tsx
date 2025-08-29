@@ -18,7 +18,7 @@ export function useForm(
   const Form: React.FC<Omit<FormPropsDom, 'update'>> = useCallback(
     ({ onSubmit, ...props }) => (
       <FormRendered
-        initialization={initialization}
+        initialization={values}
         schema={schema}
         style={styleType}
         update={(val, err) => {
@@ -29,7 +29,8 @@ export function useForm(
         {...props}
       />
     ),
-    [values, schema, styleType]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [schema, styleType]
   );
 
   return [Form, values, errors];
