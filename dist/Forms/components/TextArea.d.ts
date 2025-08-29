@@ -1,5 +1,5 @@
-import "../../../styles/forms.style.css";
-import type { InputTypes } from "./formComponents";
+import '../../../styles/forms.style.css';
+import type { InputTypes } from './formComponents';
 /**
  * TextArea Component
  * @param name - The name of the textarea

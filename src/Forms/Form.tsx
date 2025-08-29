@@ -1,5 +1,5 @@
 import type { FormProps } from './core/form';
 
-export const Form: React.FC<FormProps> = ({onSubmit, className,...props}) => {
+export const Form: React.FC<Omit<FormProps,'update'>> = ({onSubmit, className,...props}) => {
     return (<form onSubmit={()=>onSubmit} className={`flex flex-col gap-4 p-4 ${className ?? ''}`} {...props} />);
 };

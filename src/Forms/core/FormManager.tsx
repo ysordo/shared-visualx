@@ -2,7 +2,7 @@ import { Form } from '../Form';
 import { Rendered } from '../../core/SchemaManager';
 import type { TData, TSchema, TStyle } from '../../core/schemaManager.t';
 import type { FormPropsDom, IFormRendered } from './form';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export class FormRendered
   extends React.Component<
@@ -36,13 +36,10 @@ export class FormRendered
     this.setState((prev) => ({ ...prev, [e.key]: e.value }));
   }
 
-  public doom({ onSubmit, update, ...props }: FormPropsDom) {
+  public doom({ onSubmit, ...props }: Omit<FormPropsDom, 'update'>) {
     return (
       this._render && (
-        <Form
-          onSubmit={onSubmit}
-          update={() => update(this.state, {})}
-          {...props}>
+        <Form onSubmit={onSubmit} {...props}>
           <this._render.Doom
             style={this.style}
             data={this.state}
@@ -53,6 +50,11 @@ export class FormRendered
         </Form>
       )
     );
+  }
+  componentDidUpdate(_: any, prevState: TData) {
+    if (prevState !== this.state) {
+      this.props.update(this.state, {});
+    }
   }
   render() {
     return this.doom({ ...this.props });

@@ -15,7 +15,8 @@ export declare class FormRendered extends React.Component<FormPropsDom & {
         style?: TStyle;
     });
     private onChange;
-    doom({ onSubmit, update, ...props }: FormPropsDom): import("react/jsx-runtime").JSX.Element | null;
+    doom({ onSubmit, ...props }: Omit<FormPropsDom, 'update'>): import("react/jsx-runtime").JSX.Element | null;
+    componentDidUpdate(_: any, prevState: TData): void;
     render(): import("react/jsx-runtime").JSX.Element | null;
 }
 //# sourceMappingURL=FormManager.d.ts.map
