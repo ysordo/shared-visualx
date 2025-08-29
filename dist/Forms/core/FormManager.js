@@ -1,5 +1,5 @@
 'use client';
-import { jsx as _jsx } from "react/jsx-runtime";
+import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
 import React from 'react';
 import { Form } from '../Form';
 import { Rendered } from '../../core/SchemaManager';
@@ -19,13 +19,17 @@ export class FormRendered extends React.Component {
         }
     }
     render() {
-        if (!this._render) {
+        if (!this._render && !this.props.schema) {
             return null;
         }
         return (_jsx(Form, { className: this.props.className, onSubmit: (e) => {
                 e.preventDefault();
                 this.props.onSubmit?.(this.state, {});
-            }, children: _jsx(this._render.Doom, { style: this.style, data: this.state, onChange: this.onChange }) }));
+            }, children: this?._render?.Doom?.({
+                data: this.state,
+                onChange: this.onChange,
+                style: this.style,
+            }) || _jsx(_Fragment, {}) }));
     }
 }
 //# sourceMappingURL=FormManager.js.map

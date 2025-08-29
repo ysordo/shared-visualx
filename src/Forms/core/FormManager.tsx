@@ -5,11 +5,9 @@ import { Rendered } from '../../core/SchemaManager';
 import type { TData, TSchema, TStyle } from '../../core/schemaManager.t';
 import type { FormPropsDom } from './form';
 
-export class FormRendered
-  extends React.Component<
-    FormPropsDom & { schema: TSchema; initialization: TData; style?: TStyle }
-  >
-{
+export class FormRendered extends React.Component<
+  FormPropsDom & { schema: TSchema; initialization: TData; style?: TStyle }
+> {
   private _render: Rendered | null;
   private style?: TStyle;
   state: TData;
@@ -38,7 +36,7 @@ export class FormRendered
   }
 
   render() {
-    if (!this._render) {
+    if (!this._render && !this.props.schema) {
       return null;
     }
 
@@ -49,11 +47,11 @@ export class FormRendered
           e.preventDefault();
           this.props.onSubmit?.(this.state, {});
         }}>
-        <this._render.Doom
-          style={this.style}
-          data={this.state}
-          onChange={this.onChange}
-        />
+        {this?._render?.Doom?.({
+          data: this.state,
+          onChange: this.onChange,
+          style: this.style,
+        }) || <></>}
       </Form>
     );
   }
