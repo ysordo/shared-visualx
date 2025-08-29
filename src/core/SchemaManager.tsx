@@ -150,9 +150,12 @@ export class Rendered extends SchemaManager implements IDoomRendered {
     return (
       <>
         {Object.entries(this.schema).map(
-          ([key, value]: [string, unknown], index: number) => (
-            <this.Generate key={`${index}`} element={{ [key]: value }} {...props} />
-          )
+          ([key, value]: [string, unknown], index: number) =>
+            this?.Generate?.({
+              key: `${index}`,
+              element: { [key]: value },
+              ...props,
+            })
         )}
       </>
     );

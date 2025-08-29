@@ -58,7 +58,11 @@ export class Rendered extends SchemaManager {
         super(schema);
     }
     Doom({ ...props }) {
-        return (_jsx(_Fragment, { children: Object.entries(this.schema).map(([key, value], index) => (_jsx(this.Generate, { element: { [key]: value }, ...props }, `${index}`))) }));
+        return (_jsx(_Fragment, { children: Object.entries(this.schema).map(([key, value], index) => this?.Generate?.({
+                key: `${index}`,
+                element: { [key]: value },
+                ...props,
+            })) }));
     }
 }
 //# sourceMappingURL=SchemaManager.js.map
