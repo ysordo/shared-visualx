@@ -61,6 +61,6 @@ export class FormRendered
     if (!this.props.schema) {
       return null;
     }
-    return this.doom({ ...this.props });
+    return this.doom.bind(this)?.({ ...this.props });
   }
 }

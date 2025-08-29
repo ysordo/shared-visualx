@@ -30,7 +30,7 @@ export class FormRendered extends React.Component {
         if (!this.props.schema) {
             return null;
         }
-        return this.doom({ ...this.props });
+        return this.doom.bind(this)?.({ ...this.props });
     }
 }
 //# sourceMappingURL=FormManager.js.map
