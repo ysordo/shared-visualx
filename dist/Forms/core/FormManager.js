@@ -26,6 +26,9 @@ export class FormRendered extends React.Component {
         }
     }
     render() {
+        if (!this.props.schema) {
+            return null;
+        }
         return this.doom({ ...this.props });
     }
 }

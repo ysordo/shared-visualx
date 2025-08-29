@@ -57,6 +57,7 @@ export class FormRendered
     }
   }
   render() {
+    if(!this.props.schema){return null;}
     return this.doom({ ...this.props });
   }
 }
