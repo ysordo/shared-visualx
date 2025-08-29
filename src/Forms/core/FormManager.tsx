@@ -1,22 +1,18 @@
+'use client';
+import React from 'react';
 import { Form } from '../Form';
 import { Rendered } from '../../core/SchemaManager';
 import type { TData, TSchema, TStyle } from '../../core/schemaManager.t';
-import type { FormPropsDom, IFormRendered } from './form';
-import React from 'react';
+import type { FormPropsDom } from './form';
 
 export class FormRendered
   extends React.Component<
-    FormPropsDom & {
-      schema: TSchema;
-      initialization: TData;
-      style?: TStyle;
-    }
+    FormPropsDom & { schema: TSchema; initialization: TData; style?: TStyle }
   >
-  implements IFormRendered
 {
-  private _render: Rendered | null = null;
+  private _render: Rendered | null;
   private style?: TStyle;
-  state: TData = {};
+  state: TData;
 
   constructor(
     props: FormPropsDom & {
@@ -26,41 +22,39 @@ export class FormRendered
     }
   ) {
     super(props);
-    const { initialization, schema, style } = props;
-    this.state = initialization || {};
-    this._render = schema ? new Rendered(schema) : null;
-    this.style = style;
+    this.state = { ...props.initialization };
+    this._render = props.schema ? new Rendered(props.schema) : null;
+    this.style = props.style;
   }
 
-  private onChange(e: { key: string; value: unknown }): void {
+  private onChange = (e: { key: string; value: unknown }) => {
     this.setState((prev) => ({ ...prev, [e.key]: e.value }));
+  };
+
+  componentDidUpdate(_: any, prevState: TData) {
+    if (JSON.stringify(prevState) !== JSON.stringify(this.state)) {
+      this.props.update?.(this.state, {});
+    }
   }
 
-  public doom({ onSubmit, ...props }: Omit<FormPropsDom, 'update'>) {
-    return this._render ? (
+  render() {
+    if (!this._render) {
+      return null;
+    }
+
+    return (
       <Form
+        {...this.props}
         onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
-          onSubmit(this.state, {});
-        }}
-        {...props}>
+          this.props.onSubmit?.(this.state, {});
+        }}>
         <this._render.Doom
           style={this.style}
           data={this.state}
-          onChange={({ key, value }) => this.onChange({ key, value })}
+          onChange={this.onChange}
         />
       </Form>
-    ) : null;
-  }
-  componentDidUpdate(_: any, prevState: TData) {
-    if (JSON.stringify(prevState) !== JSON.stringify(this.state)) {
-      this.props.update(this.state, {});
-    }
-  }
-  render() {
-    if (!this.props.schema) {
-      return null;
-    }
-    return this.doom.bind(this)?.({ ...this.props });
+    );
   }
 }

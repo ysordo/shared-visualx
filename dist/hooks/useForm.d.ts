@@ -1,5 +1,5 @@
 import type { FormPropsDom } from '../Forms/core/form';
-import type { TData, TStyle, TSchema } from '../core/schemaManager.t';
+import type { TData, TSchema, TStyle } from '../core/schemaManager.t';
 export declare function useForm(initialization: TData, schema: TSchema, styleType?: TStyle): [
     React.FC<Omit<FormPropsDom, 'update'>>,
     TData,

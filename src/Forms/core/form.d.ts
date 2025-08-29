@@ -14,6 +14,3 @@ interface FormPropsDom {
 interface FormProps extends FormPropsDom {
     children: JSX.Element;
 }
-interface IFormRendered {
-  doom({onSubmit, ...props}:FormProps): JSX.Element | null;
-}
