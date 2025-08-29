@@ -124,13 +124,13 @@ export class SchemaManager {
         tag,
         { ...props, children: undefined, key },
         (props.children as unknown[]).map((child, idx) => (
-          <this.Generate
-            data={data}
-            onChange={onChange}
-            key={`${idx}`}
-            element={child}
-            style={style}
-          />
+          this.Generate({
+            data,
+            onChange,
+            key:`${idx}`,
+            element:child,
+            style
+          })
         ))
       );
     }

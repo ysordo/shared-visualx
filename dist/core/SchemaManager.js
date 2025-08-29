@@ -1,4 +1,4 @@
-import { jsx as _jsx, Fragment as _Fragment } from "react/jsx-runtime";
+import { Fragment as _Fragment, jsx as _jsx } from "react/jsx-runtime";
 import { createElement as _createElement } from "react";
 import React from 'react';
 import { Button, Input, RadioGroup, Select, TextArea } from '../Forms';
@@ -45,7 +45,13 @@ export class SchemaManager {
             if (typeof props.children === 'string') {
                 return React.createElement(tag, { ...props, key }, props.children);
             }
-            return React.createElement(tag, { ...props, children: undefined, key }, props.children.map((child, idx) => (_jsx(this.Generate, { data: data, onChange: onChange, element: child, style: style }, `${idx}`))));
+            return React.createElement(tag, { ...props, children: undefined, key }, props.children.map((child, idx) => (this.Generate({
+                data,
+                onChange,
+                key: `${idx}`,
+                element: child,
+                style
+            }))));
         }
         return React.createElement(tag, {
             ...props,

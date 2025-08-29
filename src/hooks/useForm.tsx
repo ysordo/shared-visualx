@@ -18,7 +18,7 @@ export function useForm(
   const Form: React.FC<Omit<FormPropsDom, 'update'>> = useCallback(
     ({ onSubmit, ...props }) => (
       <FormRendered
-        initialization={values}
+        initialization={initialization}
         schema={schema}
         style={styleType}
         update={(val, err) => {
