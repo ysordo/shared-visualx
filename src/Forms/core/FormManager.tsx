@@ -37,27 +37,30 @@ export class FormRendered
   }
 
   public doom({ onSubmit, ...props }: Omit<FormPropsDom, 'update'>) {
-    return (
-      this._render && (
-        <Form onSubmit={onSubmit} {...props}>
-          <this._render.Doom
-            style={this.style}
-            data={this.state}
-            onChange={({ key, value }) => {
-              this.onChange({ key, value });
-            }}
-          />
-        </Form>
-      )
-    );
+    return this._render ? (
+      <Form
+        onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+          e.preventDefault();
+          onSubmit(this.state, {});
+        }}
+        {...props}>
+        <this._render.Doom
+          style={this.style}
+          data={this.state}
+          onChange={({ key, value }) => this.onChange({ key, value })}
+        />
+      </Form>
+    ) : null;
   }
   componentDidUpdate(_: any, prevState: TData) {
-    if (prevState !== this.state) {
+    if (JSON.stringify(prevState) !== JSON.stringify(this.state)) {
       this.props.update(this.state, {});
     }
   }
   render() {
-    if(!this.props.schema){return null;}
+    if (!this.props.schema) {
+      return null;
+    }
     return this.doom({ ...this.props });
   }
 }

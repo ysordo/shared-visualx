@@ -16,12 +16,13 @@ export class FormRendered extends React.Component {
         this.setState((prev) => ({ ...prev, [e.key]: e.value }));
     }
     doom({ onSubmit, ...props }) {
-        return (this._render && (_jsx(Form, { onSubmit: onSubmit, ...props, children: _jsx(this._render.Doom, { style: this.style, data: this.state, onChange: ({ key, value }) => {
-                    this.onChange({ key, value });
-                } }) })));
+        return this._render ? (_jsx(Form, { onSubmit: (e) => {
+                e.preventDefault();
+                onSubmit(this.state, {});
+            }, ...props, children: _jsx(this._render.Doom, { style: this.style, data: this.state, onChange: ({ key, value }) => this.onChange({ key, value }) }) })) : null;
     }
     componentDidUpdate(_, prevState) {
-        if (prevState !== this.state) {
+        if (JSON.stringify(prevState) !== JSON.stringify(this.state)) {
             this.props.update(this.state, {});
         }
     }
