@@ -30,7 +30,7 @@ export const RadioGroup: React.FC<InputTypes.RadioGroupProps> = ({
           id={opt.value}
           value={opt.value}
           checked={value === opt.value}
-          onChange={() => onChange(opt.value)}
+          onChange={() => onChange(opt.value === value ? '' : opt.value)}
         />
         {opt.label}
       </label>
