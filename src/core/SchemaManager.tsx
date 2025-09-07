@@ -7,6 +7,49 @@ import {
   type TSchema,
 } from './schemaManager.t';
 
+/**
+ * A schema-driven form generator that dynamically renders UI components based on JSON schema definitions.
+ *
+ * This system transforms declarative schema configurations into fully functional React form components
+ * with built-in state management and validation support.
+ *
+ * @class SchemaManager
+ * @param schema - The JSON schema definition that describes the form structure and field properties
+ *
+ * @example
+ * // Basic schema definition
+ * const formSchema = {
+ *   username: { type: 'text', name: 'username', label: 'Username' },
+ *   email: { type: 'email', name: 'email', label: 'Email Address' },
+ *   submit: { type: 'submit', children: 'Create Account' }
+ * };
+ *
+ * const schemaManager = new SchemaManager(formSchema);
+ *
+ * @example
+ * // Using the rendered form
+ * <Rendered
+ *   schema={formSchema}
+ *   data={formData}
+ *   onChange={(update) => handleFieldChange(update)}
+ *   style="custom-styling-class"
+ * />
+ *
+ * @remarks
+ * Supported element types:
+ * - Input fields: text, email, password, number, tel, date, file, checkbox
+ * - Buttons: button, submit, reset
+ * - Select dropdowns
+ * - Textareas
+ * - Radio groups
+ * - Custom HTML elements with children
+ *
+ * The system automatically handles:
+ * - Component rendering based on schema type
+ * - Value propagation and change events
+ * - Consistent styling through styleType propagation
+ * - Key management for React rendering optimization
+ */
 export class SchemaManager {
   constructor(protected schema: TSchema) {}
 
@@ -123,41 +166,20 @@ export class SchemaManager {
       return React.createElement(
         tag,
         { ...props, children: undefined, key },
-        (props.children as unknown[]).map((child, idx) => (
+        (props.children as unknown[]).map((child, idx) =>
           this.Generate({
             data,
             onChange,
-            key:`${idx}`,
-            element:child,
-            style
+            key: `${idx}`,
+            element: child,
+            style,
           })
-        ))
+        )
       );
     }
     return React.createElement(tag, {
       ...props,
       key,
     });
-  }
-}
-
-export class Rendered extends SchemaManager implements IDoomRendered {
-  constructor(schema: TSchema) {
-    super(schema);
-  }
-
-  public Doom({ ...props }: IRendered): RenderSchema {
-    return (
-      <>
-        {Object.entries(this.schema).map(
-          ([key, value]: [string, unknown], index: number) =>
-            this?.Generate?.({
-              key: `${index}`,
-              element: { [key]: value },
-              ...props,
-            })
-        )}
-      </>
-    );
   }
 }

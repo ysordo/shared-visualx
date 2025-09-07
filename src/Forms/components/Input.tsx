@@ -1,19 +1,65 @@
 'use client';
-import { InputContainer } from './InputContainer';
 import '../../../styles/forms.style.css';
-import type { InputProps, InputTypes } from './formComponents';
+import type { InputProps } from './formComponents';
+import { InputText } from './I/Text';
+import { InputDate } from './I/Date';
+import { InputEmail } from './I/Email';
+import { InputFile } from './I/File';
+import { InputNumber } from './I/Number';
+import { InputPassword } from './I/Password';
+import { InputPhone } from './I/Phone';
+import { Checkbox } from './I/Checkbox';
 
 /**
- * Input Component Props
- * @param type - The type of input (text, date, email, file, number, password, phone)
- * @param name - The name of the input
- * @param label - The label to display for the input
- * @param value - The current value of the input
- * @param onChange - Function to call when the input value changes
- * @param placeholder - Placeholder text for the input
- * @param className - Optional additional class names for the input
- * @param styleType - Optional style type for the input
- * @returns A styled input element based on the specified type
+ * A polymorphic input component that renders different input types based on the specified type.
+ *
+ * Acts as a factory component that delegates to specialized input components
+ * while maintaining a consistent API. Handles type-specific value conversions
+ * and callback signatures.
+ *
+ * @param type - The input type to render (text, date, email, file, number, password, phone, checkbox)
+ * @param styleType - Optional CSS class name(s) for custom styling of the input element
+ * @param props - Additional props passed to the underlying input component
+ *
+ * @example
+ * // Text input
+ * <Input
+ *   type="text"
+ *   name="username"
+ *   label="Username"
+ *   value={username}
+ *   onChange={(value) => setUsername(value)}
+ *   styleType="futuristic"
+ * />
+ *
+ * @example
+ * // Checkbox input
+ * <Input
+ *   type="checkbox"
+ *   name="agreeToTerms"
+ *   label="I agree to the terms"
+ *   checked={agreed}
+ *   onChange={(value) => setAgreed(value)}
+ * />
+ *
+ * @example
+ * // File input
+ * <Input
+ *   type="file"
+ *   name="avatar"
+ *   label="Profile picture"
+ *   onChange={(file) => setAvatar(file)}
+ *   accept="image/*"
+ * />
+ *
+ * @remarks
+ * The component handles type-specific value conversions:
+ * - String-based inputs: text, email, password, phone, date
+ * - Number input: numeric values
+ * - File input: File objects or null
+ * - Checkbox: boolean values
+ *
+ * Each input type delegates to a specialized component with proper TypeScript typing.
  */
 export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
   switch (type) {
@@ -92,209 +138,3 @@ export const Input: React.FC<InputProps> = ({ type, styleType, ...props }) => {
       return null;
   }
 };
-
-/**
- * Individual Input Components
- * Each component handles a specific input type and its associated props
- * @param props - Props specific to the input type
- * @returns A styled input element
- */
-const InputText: React.FC<InputTypes.InputTextProps> = ({
-  name,
-  label,
-  value,
-  styleType,
-  onChange,
-  placeholder,
-  className,
-}) => (
-  <InputContainer name={name} label={label}>
-    <input
-      id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
-      type="text"
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  </InputContainer>
-);
-
-/**
- * Date Input Component
- * @param props - Props specific to the date input
- * @returns A styled date input element
- */
-const InputDate: React.FC<InputTypes.InputDateProps> = ({
-  name,
-  label,
-  value,
-  styleType,
-  onChange,
-  className,
-}) => (
-  <InputContainer name={name} label={label}>
-    <input
-      id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
-      type="date"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  </InputContainer>
-);
-
-/**
- * Email Input Component
- * @param props - Props specific to the email input
- * @returns A styled email input element
- */
-const InputEmail: React.FC<InputTypes.InputEmailProps> = ({
-  name,
-  label,
-  value,
-  styleType,
-  onChange,
-  placeholder,
-  className,
-}) => (
-  <InputContainer name={name} label={label}>
-    <input
-      id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
-      type="email"
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  </InputContainer>
-);
-
-/**
- * File Input Component
- * @param props - Props specific to the file input
- * @returns A styled file input element
- */
-const InputFile: React.FC<InputTypes.InputFileProps> = ({
-  name,
-  label,
-  styleType,
-  onChange,
-  className,
-}) => (
-  <InputContainer name={name} label={label}>
-    <input
-      id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
-      type="file"
-      onChange={(e) => onChange(e.target.files ? e.target.files[0] : null)}
-    />
-  </InputContainer>
-);
-
-/**
- * Number Input Component
- * @param props - Props specific to the number input
- * @returns A styled number input element
- */
-const InputNumber: React.FC<InputTypes.InputNumberProps> = ({
-  name,
-  label,
-  value,
-  styleType,
-  onChange,
-  placeholder,
-  className,
-}) => (
-  <InputContainer name={name} label={label}>
-    <input
-      id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
-      type="number"
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(Number(e.target.value))}
-    />
-  </InputContainer>
-);
-
-/**
- * Password Input Component
- * @param props - Props specific to the password input
- * @returns A styled password input element
- */
-const InputPassword: React.FC<InputTypes.InputPasswordProps> = ({
-  name,
-  label,
-  value,
-  styleType,
-  onChange,
-  placeholder,
-  className,
-}) => (
-  <InputContainer name={name} label={label}>
-    <input
-      id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
-      type="password"
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  </InputContainer>
-);
-
-/**
- * Phone Input Component
- * @param props - Props specific to the phone input
- * @returns A styled phone input element
- */
-const InputPhone: React.FC<InputTypes.InputPhoneProps> = ({
-  name,
-  label,
-  value,
-  styleType,
-  onChange,
-  placeholder,
-  className,
-}) => (
-  <InputContainer name={name} label={label}>
-    <input
-      id={name}
-      className={`${styleType ?? ''} ${className ?? ''}`}
-      type="tel"
-      value={value}
-      placeholder={placeholder}
-      onChange={(e) => onChange(e.target.value)}
-    />
-  </InputContainer>
-);
-
-/**
- * Checkbox Component
- * @param name - The name of the checkbox input
- * @param label - The label to display next to the checkbox
- * @param checked - Boolean indicating if the checkbox is checked
- * @param styleType - Optional style type for the checkbox
- * @param className - Optional additional class names for the checkbox
- * @param onChange - Function to call when the checkbox state changes
- * @returns A styled checkbox input with a label
- */
-const Checkbox: React.FC<InputTypes.CheckboxProps> = ({
-  name,
-  label,
-  checked,
-  styleType,
-  className,
-  onChange,
-}) => (
-  <label htmlFor={name} className={`${styleType} ${className}`}>
-    <input
-      id={name}
-      type="checkbox"
-      checked={checked}
-      onChange={() => onChange(!checked)}
-    />
-    {label}
-  </label>
-);

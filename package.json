@@ -19,8 +19,7 @@
         "prepublishOnly": "pnpm run build && pnpm run test",
         "build": "tsc",
         "lint": "eslint src --ext .ts,.tsx",
-        "lint:fix": "eslint src --ext .ts,.tsx --fix",
-        "docs:generate": "typedoc"
+        "lint:fix": "eslint src --ext .ts,.tsx --fix"
     },
     "keywords": [
         "typescript",
@@ -42,8 +41,6 @@
         "eslint-plugin-react": "^7.37.5",
         "eslint-plugin-react-hooks": "^5.2.0",
         "tailwindcss": "^4.1.12",
-        "tsup": "^8.5.0",
-        "typedoc": "^0.28.7",
         "typescript": "^5.8.3"
     },
     "peerDependencies": {

@@ -1,4 +1,7 @@
-export const typeofInput = [
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.typeofInput = void 0;
+exports.typeofInput = [
     'checkbox',
     'color',
     'date',
